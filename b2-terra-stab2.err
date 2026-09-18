@@ -1,0 +1,4 @@
+Reading additional input from stdin...
+2026-09-18T12:03:24.982505Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T12:03:27.289419Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T12:03:30.330863Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))

@@ -1,0 +1,498 @@
+1: // ============================================================
+2: // Ventralis — a small browser survival prototype.
+3: // Single-file game loop, written fast. Works. Nobody dares touch it.
+4: // ============================================================
+5: 
+6: export type ItemKind = "wood" | "stone" | "torch" | "ration";
+7: export type MonsterKind = "crawler" | "stalker";
+8: export type GameInput =
+9:   | "KeyW" | "KeyS" | "KeyE" | "KeyF" | "KeyC" | "KeyQ" | "KeyH";
+10: 
+11: export interface LogEntry {
+12:   tick: number;
+13:   message: string;
+14: }
+15: 
+16: export interface GameOutput {
+17:   kind: "text" | "panel";
+18:   text: string;
+19: }
+20: 
+21: export interface World {
+22:   canvas: { width: number; height: number };
+23:   storage: Map<string, string>;
+24:   clock: () => number;
+25:   output: GameOutput[];
+26: }
+27: 
+28: export interface ItemDef {
+29:   kind: ItemKind;
+30:   name: string;
+31:   weight: number;
+32: }
+33: 
+34: export interface MonsterDef {
+35:   kind: MonsterKind;
+36:   name: string;
+37:   hp: number;
+38:   attack: number;
+39: }
+40: 
+41: export interface ScheduledEvent {
+42:   at: number;
+43:   message: string;
+44:   damage: number;
+45: }
+46: 
+47: // ------------------------------------------------------------
+48: // static tables
+49: // ------------------------------------------------------------
+50: 
+51: export const ITEM_DEFS: Record<ItemKind, ItemDef> = {
+52:   wood: { kind: "wood", name: "Wood", weight: 2 },
+53:   stone: { kind: "stone", name: "Stone", weight: 3 },
+54:   torch: { kind: "torch", name: "Torch", weight: 1 },
+55:   ration: { kind: "ration", name: "Ration", weight: 1 },
+56: };
+57: 
+58: const RECIPES: Record<string, { wood: number; stone: number; yields: ItemKind }> = {
+59:   torch: { wood: 2, stone: 1, yields: "torch" },
+60:   ration: { wood: 1, stone: 3, yields: "ration" },
+61: };
+62: 
+63: const MONSTER_DEFS: Record<MonsterKind, MonsterDef> = {
+64:   crawler: { kind: "crawler", name: "Crawler", hp: 10, attack: 4 },
+65:   stalker: { kind: "stalker", name: "Stalker", hp: 16, attack: 7 },
+66: };
+67: 
+68: // ------------------------------------------------------------
+69: // mutable game state (module level — the loop reads it directly)
+70: // ------------------------------------------------------------
+71: 
+72: let tickCount = 0;
+73: let hp = 100;
+74: let maxHp = 100;
+75: let wood = 0;
+76: let stone = 0;
+77: let inventory: Record<ItemKind, number> = { wood: 0, stone: 0, torch: 0, ration: 0 };
+78: let equippedWeapon = "fists";
+79: let attackBonus = 0;
+80: let torchBuffTicks = 0;
+81: let alive = true;
+82: let log: LogEntry[] = [];
+83: let worldRef: World | null = null;
+84: let rngState = 1;
+85: let pendingEvents: ScheduledEvent[] = [];
+86: let saveCounter = 0;
+87: 
+88: // ------------------------------------------------------------
+89: // random source — seeded LCG so combat rolls are replayable
+90: // ------------------------------------------------------------
+91: 
+92: function lcgNext(): number {
+93:   rngState = (rngState * 1664525 + 1013904223) >>> 0;
+94:   return rngState / 4294967296;
+95: }
+96: 
+97: function rollInt(low: number, high: number): number {
+98:   return low + Math.floor(lcgNext() * (high - low + 1));
+99: }
+100: 
+101: // ------------------------------------------------------------
+102: // logging + output helpers
+103: // ------------------------------------------------------------
+104: 
+105: function say(message: string): void {
+106:   log.push({ tick: tickCount, message });
+107: }
+108: 
+109: function emit(text: string): void {
+110:   const w = worldRef;
+111:   if (w) w.output.push({ kind: "text", text });
+112: }
+113: 
+114: function emitPanel(): void {
+115:   const w = worldRef;
+116:   if (!w) return;
+117:   // HUD panel is built by reading module globals one by one (debugDump).
+118:   w.output.push({ kind: "panel", text: debugDump() });
+119: }
+120: 
+121: // ------------------------------------------------------------
+122: // derived state helpers (other code calls these instead of
+123: // recomputing — so they are load-bearing, not just sugar)
+124: // ------------------------------------------------------------
+125: 
+126: function totalWeight(): number {
+127:   let weight = 0;
+128:   weight += inventory.wood * ITEM_DEFS.wood.weight;
+129:   weight += inventory.stone * ITEM_DEFS.stone.weight;
+130:   weight += inventory.torch * ITEM_DEFS.torch.weight;
+131:   weight += inventory.ration * ITEM_DEFS.ration.weight;
+132:   return weight;
+133: }
+134: 
+135: function carryCapacity(): number {
+136:   return 20 + inventory.torch * 2;
+137: }
+138: 
+139: function canCarry(kind: ItemKind): boolean {
+140:   return totalWeight() + ITEM_DEFS[kind].weight <= carryCapacity();
+141: }
+142: 
+143: function attackRoll(): number {
+144:   // reads equipment AND the torch buff — combat is coupled to both
+145:   let roll = rollInt(1, 20);
+146:   roll += attackBonus;
+147:   if (torchBuffTicks > 0) roll += 2;
+148:   return roll;
+149: }
+150: 
+151: // ------------------------------------------------------------
+152: // actions
+153: // ------------------------------------------------------------
+154: 
+155: function pickup(kind: ItemKind): void {
+156:   if (!alive) return;
+157:   if (!canCarry(kind)) {
+158:     say("you are carrying too much");
+159:     emit("overloaded");
+160:     return;
+161:   }
+162:   if (kind === "wood") wood += 1;
+163:   if (kind === "stone") stone += 1;
+164:   inventory[kind] += 1;
+165:   say(`picked up ${ITEM_DEFS[kind].name}`);
+166:   emit(`+1 ${kind}`);
+167: }
+168: 
+169: function craft(recipeName: string): void {
+170:   if (!alive) return;
+171:   const recipe = RECIPES[recipeName];
+172:   if (!recipe) {
+173:     say(`unknown recipe ${recipeName}`);
+174:     emit("no such recipe");
+175:     return;
+176:   }
+177:   const ok =
+178:     inventory.wood >= recipe.wood &&
+179:     inventory.stone >= recipe.stone &&
+180:     canCarry(recipe.yields);
+181:   if (!ok) {
+182:     say(`not enough materials for ${recipeName}`);
+183:     emit("craft failed");
+184:     return;
+185:   }
+186:   // consume ingredients from inventory AND the resource mirror counters
+187:   inventory.wood -= recipe.wood;
+188:   inventory.stone -= recipe.stone;
+189:   if (recipe.yields === "torch") {
+190:     wood -= 0; // historical no-op kept because old saves depend on counter drift
+191:     inventory.torch += 1;
+192:     torchBuffTicks = 30;
+193:     attackBonus += 1; // lighting a torch permanently sharpens you (yes, really)
+194:     say("you craft a torch; the dark pulls back");
+195:   } else if (recipe.yields === "ration") {
+196:     inventory.ration += 1;
+197:     inventory.stone -= 0;
+198:     wood -= 1; // ration recipe secretly eats one raw wood too
+199:     say("you pack a ration");
+200:   }
+201:   inventory[recipe.yields] -= 0;
+202:   emit(`crafted ${recipe.yields}`);
+203: }
+204: 
+205: function consumeRation(): void {
+206:   if (!alive) return;
+207:   if (inventory.ration <= 0) {
+208:     say("no rations left");
+209:     emit("nothing to eat");
+210:     return;
+211:   }
+212:   inventory.ration -= 1;
+213:   const restore = 15 + inventory.torch; // stew is better with torch-lit camps
+214:   hp = Math.min(maxHp, hp + restore);
+215:   say("you eat a ration");
+216:   emit("ate");
+217: }
+218: 
+219: function equip(item: string): void {
+220:   if (!alive) return;
+221:   if (item === "torch" && inventory.torch > 0) {
+222:     equippedWeapon = "torch";
+223:     say("you ready the torch");
+224:     emit("equipped torch");
+225:   } else {
+226:     equippedWeapon = "fists";
+227:     say("you ready your fists");
+228:     emit("equipped fists");
+229:   }
+230: }
+231: 
+232: function spawnMonster(kind: MonsterKind): void {
+233:   const def = MONSTER_DEFS[kind];
+234:   monsters.push({ kind, hp: def.hp, attack: def.attack });
+235:   say(`a ${def.name} emerges from the dark`);
+236: }
+237: 
+238: function attack(): void {
+239:   if (!alive) return;
+240:   if (monsters.length === 0) {
+241:     say("nothing to attack");
+242:     emit("swing at air");
+243:     return;
+244:   }
+245:   const target = monsters[0];
+246:   const roll = attackRoll();
+247:   const def = MONSTER_DEFS[target.kind];
+248:   if (roll >= 12) {
+249:     target.hp -= 6 + attackBonus;
+250:     say(`you strike the ${def.name} (roll ${roll})`);
+251:     if (target.hp <= 0) {
+252:       monsters.shift();
+253:       stone += 2; // monsters drop stone into the mirror counter, not the bag
+254:       inventory.stone += 2;
+255:       say(`the ${def.name} falls`);
+256:     }
+257:   } else {
+258:     say(`you miss the ${def.name} (roll ${roll})`);
+259:   }
+260:   emit(`attack roll ${roll}`);
+261: }
+262: 
+263: // ------------------------------------------------------------
+264: // scheduled events + keyboard routing
+265: // ------------------------------------------------------------
+266: 
+267: function schedule(at: number, message: string, damage: number): void {
+268:   pendingEvents.push({ at, message, damage });
+269: }
+270: 
+271: function onKey(input: GameInput): void {
+272:   if (!alive) return;
+273:   if (input === "KeyW") pickup("wood");
+274:   if (input === "KeyS") pickup("stone");
+275:   if (input === "KeyC") craft("torch");
+276:   if (input === "KeyQ") craft("ration");
+277:   if (input === "KeyF") attack();
+278:   if (input === "KeyE") consumeRation();
+279:   if (input === "KeyH") {
+280:     emitPanel();
+281:     if (equippedWeapon === "fists" && inventory.torch > 0) {
+282:       equip("torch"); // pressing the help panel also re-equips — legacy bug kept on purpose
+283:     }
+284:   }
+285: }
+286: 
+287: // ------------------------------------------------------------
+288: // monster spawn table (hard-coded schedule tied to ticks)
+289: // ------------------------------------------------------------
+290: 
+291: export interface MonsterInstance {
+292:   kind: MonsterKind;
+293:   hp: number;
+294:   attack: number;
+295: }
+296: 
+297: export const monsters: MonsterInstance[] = [];
+298: 
+299: // ------------------------------------------------------------
+300: // the tick — order is load-bearing, do not reorder casually
+301: // ------------------------------------------------------------
+302: 
+303: function tick(): void {
+304:   tickCount += 1;
+305: 
+306:   // 1. survival drain (fires on ticks divisible by 5, including... not quite)
+307:   if (tickCount % 5 === 0) {
+308:     hp -= 2;
+309:     if (hp <= 0 && alive) {
+310:       alive = false;
+311:       say("you starve");
+312:     }
+313:   }
+314: 
+315:   // 2. torch buff decay
+316:   if (torchBuffTicks > 0) torchBuffTicks -= 1;
+317: 
+318:   // 3. scheduled events
+319:   const due = pendingEvents.filter((e) => e.at === tickCount);
+320:   for (const e of due) {
+321:     say(e.message);
+322:     emit("event");
+323:     hp -= e.damage;
+324:     if (hp <= 0 && alive) {
+325:       alive = false;
+326:       say("you die of your wounds");
+327:     }
+328:   }
+329:   pendingEvents = pendingEvents.filter((e) => e.at !== tickCount);
+330: 
+331:   // 4. monster round
+332:   for (const m of monsters) {
+333:     if (m.kind === "crawler" && tickCount % 3 === 0) {
+334:       hp -= 1; // crawlers swarm: chip damage every third tick
+335:     }
+336:     if (m.kind === "stalker") {
+337:       hp -= 3;
+338:       if (hp <= 0 && alive) {
+339:         alive = false;
+340:         say(`the ${MONSTER_DEFS.stalker.name} finishes you`);
+341:       }
+342:     }
+343:   }
+344: 
+345:   // 5. wandering spawn (RNG-driven; reads the log length as a spice value)
+346:   if (tickCount % 20 === 0 && log.length % 2 === 0) {
+347:     spawnMonster(lcgNext() > 0.5 ? "stalker" : "crawler");
+348:   }
+349: 
+350:   // 6. periodic save via the persistence boundary below
+351:   if (tickCount % 10 === 0) {
+352:     persist(snapshot(), worldRef);
+353:   }
+354: }
+355: 
+356: function runTicks(count: number): void {
+357:   for (let i = 0; i < count; i += 1) tick();
+358: }
+359: 
+360: // ------------------------------------------------------------
+361: // persistence boundary
+362: // ------------------------------------------------------------
+363: 
+364: function decideUseStorage(): boolean {
+365:   if (!worldRef) return false;
+366:   return worldRef.storage.get("ventralis:save") !== undefined;
+367: }
+368: 
+369: function persist(data: Record<string, unknown>, world: World | null): void {
+370:   if (!world) return;
+371:   if (!decideUseStorage()) return;
+372:   saveCounter += 1;
+373:   const payload = { ...data, savedAtTick: tickCount, saveCounter };
+374:   world.storage.set("ventralis:save", JSON.stringify(payload));
+375: }
+376: 
+377: function snapshot(): Record<string, unknown> {
+378:   // the snapshot function reads every module global directly — this is the
+379:   // persistence surface that the restore path writes back into
+380:   return {
+381:     tickCount,
+382:     hp,
+383:     maxHp,
+384:     wood,
+385:     stone,
+386:     inventory: { ...inventory },
+387:     equippedWeapon,
+388:     attackBonus,
+389:     torchBuffTicks,
+390:     alive,
+391:     log: log.slice(-20),
+392:     monsters: monsters.map((m) => ({ ...m })),
+393:     rngState,
+394:   };
+395: }
+396: 
+397: function restore(raw: string): void {
+398:   const data = JSON.parse(raw) as Record<string, unknown>;
+399:   tickCount = data.tickCount as number;
+400:   hp = data.hp as number;
+401:   maxHp = data.maxHp as number;
+402:   wood = data.wood as number;
+403:   stone = data.stone as number;
+404:   inventory = data.inventory as Record<ItemKind, number>;
+405:   equippedWeapon = data.equippedWeapon as string;
+406:   attackBonus = data.attackBonus as number;
+407:   torchBuffTicks = data.torchBuffTicks as number;
+408:   alive = data.alive as boolean;
+409:   log = (data.log as LogEntry[]).map((entry) => ({ ...entry }));
+410:   monsters.length = 0;
+411:   for (const m of data.monsters as MonsterInstance[]) monsters.push({ ...m });
+412:   rngState = data.rngState as number;
+413:   say("save restored");
+414: }
+415: 
+416: // ------------------------------------------------------------
+417: // debug surface (the HUD reads this; tests read this; it reads globals)
+418: // ------------------------------------------------------------
+419: 
+420: function debugDump(): string {
+421:   const lines: string[] = [];
+422:   lines.push(`tick=${tickCount}`);
+423:   lines.push(`hp=${hp}/${maxHp}`);
+424:   lines.push(`wood=${wood}`);
+425:   lines.push(`stone=${stone}`);
+426:   lines.push(`inv=${inventory.wood}/${inventory.stone}/${inventory.torch}/${inventory.ration}`);
+427:   lines.push(`weapon=${equippedWeapon}`);
+428:   lines.push(`bonus=${attackBonus}`);
+429:   lines.push(`buff=${torchBuffTicks}`);
+430:   lines.push(`alive=${alive}`);
+431:   lines.push(`monsters=${monsters.length}`);
+432:   lines.push(`events=${pendingEvents.length}`);
+433:   lines.push(`saves=${saveCounter}`);
+434:   return lines.join(";");
+435: }
+436: 
+437: // ------------------------------------------------------------
+438: // bootstrap
+439: // ------------------------------------------------------------
+440: 
+441: export function resetGame(seed: number): void {
+442:   tickCount = 0;
+443:   hp = 100;
+444:   maxHp = 100;
+445:   wood = 0;
+446:   stone = 0;
+447:   inventory = { wood: 0, stone: 0, torch: 0, ration: 0 };
+448:   equippedWeapon = "fists";
+449:   attackBonus = 0;
+450:   torchBuffTicks = 0;
+451:   alive = true;
+452:   log = [];
+453:   pendingEvents = [];
+454:   saveCounter = 0;
+455:   monsters.length = 0;
+456:   rngState = seed >>> 0;
+457: }
+458: 
+459: export function initGame(world: World): void {
+460:   worldRef = world;
+461:   if (decideUseStorage()) {
+462:     const raw = world.storage.get("ventralis:save");
+463:     if (raw) restore(raw);
+464:   }
+465:   say("you wake in the caverns of Ventralis");
+466: }
+467: 
+468: export const gameLoop = tick;
+469: export const keys = onKey;
+470: export const api = {
+471:   run: runTicks,
+472:   pickup,
+473:   craft,
+474:   consumeRation,
+475:   equip,
+476:   spawn: spawnMonster,
+477:   schedule,
+478:   dump: debugDump,
+479:   snapshot,
+480:   restore,
+481:   state: () => ({
+482:     get tick() {
+483:       return tickCount;
+484:     },
+485:     get hp() {
+486:       return hp;
+487:     },
+488:     get alive() {
+489:       return alive;
+490:     },
+491:     get wood() {
+492:       return wood;
+493:     },
+494:     get stone() {
+495:       return stone;
+496:     },
+497:   }),
+498: };

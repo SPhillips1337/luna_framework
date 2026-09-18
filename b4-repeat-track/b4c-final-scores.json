@@ -1,0 +1,601 @@
+{
+ "title": "B4 controlled-confirmation track \u2014 final per-run scores (12 runs, 6 paired rounds)",
+ "formula": "full = dim1(12) + dim2(8) + 2*dim3_traps + dim4 + dim5(8) + dim6 + dim7 + dim8 + dim9(7) + dim10 + dim11(10); fixed mechanical = 45; judgment dims 4/6/7/8/10 weights sum 35",
+ "protocol_arithmetic_correction": "B4-CONFIRM-PROTOCOL.md said judgment dims = '33 pts'; rubric weights are 12+7+7+7+2 = 35. Preserved explicitly, NOT renormalized: totals can exceed nothing but the fixed-45+35+20 = 100 max holds.",
+ "labels": {
+  "status": "EXPLORATORY: dim-3 scoring rule was frozen AFTER v1-v3 anchor/parser revisions made while seeing outputs (b4c-scoring-archive/scoring-provenance.json); dispatch design was pre-registered (B4-CONFIRM-PROTOCOL.md), parser implementation was not.",
+  "dim3": "parent-adjudicated per-run against the quoted hidden-coupling registers (b4c-dim3-adjudication-sheet.json; 120-cell sheet, every row pass+quote+rationale).",
+  "dims4_6_7_8_10": "blinded grader batches (2 artifacts each, opaque IDs); per-run raw scores AND verbatim quotes retained here; not parent-scored.",
+  "not_a": "not an independent-replication claim; not a controlled model ranking; no superiority claim."
+ },
+ "reconciliation_note": "Aggregator reference table contained one transcription error: row D (b4c2-luna) listed 8 traps/full 95, contradicting its OWN order-stratified list (Luna-first Luna = 7,8,8), its stated Luna dim-3 mean 7.83, and its stated +2.00 Luna-first gap. The frozen adjudication sheet gives b4c2-luna = 7 traps -> full 93, under which every reference-stated aggregate is reproduced exactly. Final records follow the sheet (primary per-run record); Luna full = 93,93,98,94,96,95 mean 94.83.",
+ "decision_rule_on_adjudicated_dim3": "CONFIRMED per pre-registered rule: Luna has runs <= 7 (b4c1 and b4c2 at 7/10) AND order-stratified paired means differ (+0.33 Terra-first vs +2.00 Luna-first). Bounded interpretation: a small artifact-completeness gap, especially in the hidden-coupling register; not model superiority. Gap is order-entangled, n=6/arm, author-written traps, judgment dims share one grading procedure.",
+ "interpretation": "The controlled confirmation reproduced a small artifact-completeness gap on this fixture, especially on the hidden-coupling register. It did not establish model superiority. The gap is order-entangled, the sample is only n=6 per arm, the trap set is author-written, and judgment dimensions were scored by a common grading procedure.",
+ "method_facts": [
+  "all 12 executions clean/valid: single turn.completed, codex_exit 0, thread id + token envelope captured",
+  "all 12 runs full marks on dims 1, 2, 5, 9, 11 (verified this session: 15/15 lets + monsters, 26/26 fns, no TODO escape, acyclic graph no-into-main, 21/21+typecheck+diff-check clean, zero FP proposals)",
+  "dim-3 final sheet is parent-adjudicated and exploratory (anchor/parser revisions occurred after earlier outputs were seen)",
+  "dims 4/6/7/8/10 are the blinded grader outputs; every quoted justification retained per run, not only aggregates",
+  "dim10 graders varied 1 vs 2 on explicit cramming-loophole rejection (A,F,J got 2; nine runs got 1); variation preserved, not smoothed",
+  "per-run records are the primary; aggregates are summaries",
+  "hard traps g and h detected 4/12 each (two-hop mechanisms), not arm-determinative"
+ ],
+ "aggregates": {
+  "terra_full": [
+   94,
+   99,
+   95,
+   98,
+   99,
+   97
+  ],
+  "luna_full": [
+   93,
+   93,
+   98,
+   94,
+   96,
+   95
+  ],
+  "terra_full_mean": 97,
+  "luna_full_mean": 94.83,
+  "terra_full_median": 97.5,
+  "luna_full_median": 94.5,
+  "terra_full_range": 5,
+  "luna_full_range": 5,
+  "terra_dim3": [
+   7,
+   10,
+   8,
+   10,
+   10,
+   9
+  ],
+  "luna_dim3": [
+   7,
+   7,
+   9,
+   8,
+   8,
+   8
+  ],
+  "terra_dim3_mean": 9,
+  "luna_dim3_mean": 7.83,
+  "terra_judgment_mean": 34,
+  "luna_judgment_mean": 34.17,
+  "order_strata": {
+   "terra_first_rounds_1_3_5": {
+    "terra": [
+     7,
+     8,
+     10
+    ],
+    "luna": [
+     7,
+     9,
+     8
+    ],
+    "paired_T_minus_L_mean": 0.33
+   },
+   "luna_first_rounds_2_4_6": {
+    "terra": [
+     10,
+     10,
+     9
+    ],
+    "luna": [
+     7,
+     8,
+     8
+    ],
+    "paired_T_minus_L_mean": 2
+   }
+  }
+ },
+ "runs": {
+  "b4c1-terra": {
+   "blind_id": "A",
+   "dim3_traps": 7,
+   "judgment_subtotal": 35,
+   "full_score": 94,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 14,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 2
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: retain as a stateful service, not a component. Its consumption sequence is observable through combat and wandering-spawn outcomes.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems use controlled direct mutation through a narrow typed `SystemContext`, rather than returned commands.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "the duplicate `wood`/`stone` mirrors are intentional observable state, not candidates for cleanup",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "If a file approaches 120 lines, split by concern rather than relaxing the budget.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c1-terra"
+  },
+  "b4c1-luna": {
+   "blind_id": "B",
+   "dim3_traps": 7,
+   "judgment_subtotal": 34,
+   "full_score": 93,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 14,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Persistence boundary: storage serialization and save-key policy are I/O concerns. Making them components would leak infrastructure into gameplay state.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "controlled direct mutation through system-owned world ports",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "The acceptance oracle is `tests/characterization.test.ts`; it must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve both `stone += 2` and `inventory.stone += 2`.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "Every migrated file should remain under 120 lines; `main.ts` should remain under approximately 80 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c1-luna"
+  },
+  "b4c2-terra": {
+   "blind_id": "C",
+   "dim3_traps": 10,
+   "judgment_subtotal": 34,
+   "full_score": 99,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 20,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Persistence boundary: not a component/system. It is an adapter around `World.storage`, serialization compatibility, and a legacy \u201conly save if key already exists\u201d policy.",
+     "verbatim_in_artifact": false
+    },
+    "dim6": {
+     "quote": "`GameSession` owns the world reference, the `ScheduledEventQueue`, `PersistenceRuntime.saveCounter`, and the seeded `RandomSource`. The ECS-like `WorldState` owns player singleton components and monster entities.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Extract save codec and save adapter, preserving the precise snapshot schema, key-gate, counter behavior, and restore log behavior.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "or makes the compatibility fa\u00e7ade/line budget less clear than ordinary typed session modules",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c2-terra"
+  },
+  "b4c2-luna": {
+   "blind_id": "D",
+   "dim3_traps": 7,
+   "judgment_subtotal": 34,
+   "full_score": 93,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 14,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: deterministic infrastructure with a stream/state contract. It should not become a component attached to an entity; doing so risks changing draw order and replay behavior.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems should use controlled direct mutation through a single mutable world-state context.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "At every slice, `tests/characterization.test.ts` is the acceptance oracle and must not be changed.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Extract inventory and crafting, explicitly retaining mirror drift, secret wood consumption, and no-op statements where needed.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "Each migrated implementation file should remain under 120 lines. `main.ts` should remain under approximately 80 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c2-luna"
+  },
+  "b4c3-terra": {
+   "blind_id": "E",
+   "dim3_traps": 8,
+   "judgment_subtotal": 34,
+   "full_score": 95,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 16,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: not a component. It is a stateful deterministic service whose draw order is observable.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems should use controlled direct mutation of a single `GameSession` passed explicitly, rather than returned commands.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "After every slice, run the unchanged characterization suite and typecheck; do not batch semantic changes across slices.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve independent mirror fields; do not normalize them from inventory.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "main.ts                         # compatibility fa\u00e7ade, target <80 lines",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c3-terra"
+  },
+  "b4c3-luna": {
+   "blind_id": "F",
+   "dim3_traps": 9,
+   "judgment_subtotal": 35,
+   "full_score": 98,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 18,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 2
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: the RNG is a deterministic infrastructure dependency and replay resource. It must not become a component attached to gameplay entities.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "controlled direct mutation inside systems, with the world aggregate passed through a narrow `GameContext`",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Pickup increments both; crafting decrements inventory only. Do not normalize them.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "The exact split can be adjusted if individual files exceed the line budget, but no migrated source file should exceed 120 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c3-luna"
+  },
+  "b4c4-terra": {
+   "blind_id": "G",
+   "dim3_traps": 10,
+   "judgment_subtotal": 33,
+   "full_score": 98,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 20,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 6,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: not a component. It is a stateful deterministic service; random-draw count and order are part of behavior.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems use controlled direct mutation of a session-owned `GameState` object, not returned command objects.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve the resulting double accounting.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "Each migrated source file should target 40\u2013110 lines; `main.ts` should remain below 80 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c4-terra"
+  },
+  "b4c4-luna": {
+   "blind_id": "H",
+   "dim3_traps": 8,
+   "judgment_subtotal": 33,
+   "full_score": 94,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 16,
+    "dim4": 12,
+    "dim6": 6,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: it is an injected deterministic service. Treating RNG state as an ECS component would spread replay mechanics through unrelated systems.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems use controlled direct mutation of a passed state/context object.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "Run the complete characterization suite after every slice; `tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "These quirks are behavior to preserve, not defects to correct.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "Every migrated file should remain under 120 lines, with `main.ts` under approximately 80 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c4-luna"
+  },
+  "b4c5-terra": {
+   "blind_id": "I",
+   "dim3_traps": 10,
+   "judgment_subtotal": 34,
+   "full_score": 99,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 20,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: not a component. It is a deterministic runtime service with serializable state and order-sensitive consumption.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems use controlled direct mutation through a narrow `SessionMutator` interface, rather than returned command objects",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "This must remain a deliberate compatibility branch.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "Every listed migrated implementation file is budgeted below 120 lines; `main.ts` remains below approximately 80 lines.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c5-terra"
+  },
+  "b4c5-luna": {
+   "blind_id": "J",
+   "dim3_traps": 8,
+   "judgment_subtotal": 35,
+   "full_score": 96,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 16,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 2
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "Seeded RNG: this is an infrastructure service with replay semantics. It must preserve consumption order and serialized state, not become a component attached to arbitrary entities.",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems should use controlled direct mutation through a typed `SimulationContext`, not returned commands.",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "Run the full suite after each slice and leave `tests/characterization.test.ts` untouched.",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve `wood -= 1` and no mirror-stone decrement.",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "The split is by responsibility rather than by blindly converting every function into an ECS system.",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c5-luna"
+  },
+  "b4c6-terra": {
+   "blind_id": "K",
+   "dim3_traps": 9,
+   "judgment_subtotal": 34,
+   "full_score": 97,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 18,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "It is a single shared sequence whose consumption order is observable and persisted",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Systems use controlled direct mutation",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "Run the suite after every individual extraction",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve the double stone drop",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "budgeted below 120 lines",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c6-terra"
+  },
+  "b4c6-luna": {
+   "blind_id": "L",
+   "dim3_traps": 8,
+   "judgment_subtotal": 34,
+   "full_score": 95,
+   "dim_scores": {
+    "dim1": 12,
+    "dim2": 8,
+    "dim5": 8,
+    "dim9": 7,
+    "dim11": 10,
+    "dim3": 16,
+    "dim4": 12,
+    "dim6": 7,
+    "dim7": 7,
+    "dim8": 7,
+    "dim10": 1
+   },
+   "judgment_quotes": {
+    "dim4": {
+     "quote": "it is a deterministic service whose consumption order is part of the behavior contract",
+     "verbatim_in_artifact": true
+    },
+    "dim6": {
+     "quote": "Mutation model: controlled direct mutation inside systems",
+     "verbatim_in_artifact": true
+    },
+    "dim7": {
+     "quote": "do not edit `tests/characterization.test.ts`",
+     "verbatim_in_artifact": true
+    },
+    "dim8": {
+     "quote": "Preserve the historical no-op and resulting drift",
+     "verbatim_in_artifact": true
+    },
+    "dim10": {
+     "quote": "below 120 lines where practical",
+     "verbatim_in_artifact": true
+    }
+   },
+   "dim3_evidence_ref": "b4c-dim3-adjudication-sheet.json results.b4c6-luna"
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "status": "final: blinded graders returned and reconciled; see b4c-final-scores.json + RESULTS.md B4 controlled-confirmation section",
+ "execution_integrity": "12/12 runs: single turn.completed, codex_exit 0, thread ids + token envelope captured; order strata Terra-first rounds 1/3/5, Luna-first rounds 2/4/6",
+ "mechanical_characterization": "12/12 worktrees: git clean under src/tests, vitest 21/21, typecheck 0, git diff --check 0 -> dim9=7/7 all runs; dim1=12, dim2=8, dim5=8 full marks on all 12 (v1 file checks are anchor/parser-independent, verified this session); dim11: zero FP proposals on all 12",
+ "audit_quality_scoring": "dim3 frozen-rule parent adjudication recorded (b4c-dim3-adjudication-sheet.json): Terra [7,10,8,10,10,9] mean 9.0 range 7-10; Luna [7,7,9,8,8,8] mean 7.83 range 7-9; exploratory label (post-hoc parser history)",
+ "inferential_conclusion": "Protocol label CONFIRMED under pre-registered rule (Luna two runs <=7 [b4c1,b4c2]; stratified gaps +0.33 Terra-first vs +2.00 Luna-first), prominently qualified: EXPLORATORY confirmation under a revised (post-v1-v3) scoring rule; small order-entangled artifact-completeness gap on hidden-coupling register; not a model ranking; no superiority claim.",
+ "provenance_chain": "v1 (wrong anchors, full-form parser) -> v2 (corrected anchors) -> v3 (all citation forms) -> FROZEN rule = per-passage parent adjudication against quoted register text; v1 output recovered verbatim, v2/v3 outputs archived in b4c-scoring-archive/ with per-revision reasons",
+ "judgment_grades": "six blinded batches reconciled: A dim10=2 corrected to literal batch value; raw JSONs at b4c-blind-grader-output.json (60 scores + 60 quotes cross-checked identical); sub-max only G dim8=6, H dim6=6; judgment means Terra 34.0 Luna 34.17; slice weights 35 per frozen rubric (brief's 33 = arithmetic error, preserved not renormalized)"
+}

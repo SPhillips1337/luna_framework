@@ -1,0 +1,358 @@
+{
+ "grades": {
+  "A": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 2
+  },
+  "B": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "C": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "D": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "E": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "F": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 2
+  },
+  "G": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 6,
+   "dim10": 1
+  },
+  "H": {
+   "dim4": 12,
+   "dim6": 6,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "I": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "J": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 2
+  },
+  "K": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  },
+  "L": {
+   "dim4": 12,
+   "dim6": 7,
+   "dim7": 7,
+   "dim8": 7,
+   "dim10": 1
+  }
+ },
+ "quotes": {
+  "A": {
+   "dim4": {
+    "quote": "Seeded RNG: retain as a stateful service, not a component. Its consumption sequence is observable through combat and wandering-spawn outcomes.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems use controlled direct mutation through a narrow typed `SystemContext`, rather than returned commands.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "the duplicate `wood`/`stone` mirrors are intentional observable state, not candidates for cleanup",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "If a file approaches 120 lines, split by concern rather than relaxing the budget.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "B": {
+   "dim4": {
+    "quote": "Persistence boundary: storage serialization and save-key policy are I/O concerns. Making them components would leak infrastructure into gameplay state.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "controlled direct mutation through system-owned world ports",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "The acceptance oracle is `tests/characterization.test.ts`; it must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve both `stone += 2` and `inventory.stone += 2`.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "Every migrated file should remain under 120 lines; `main.ts` should remain under approximately 80 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "C": {
+   "dim4": {
+    "quote": "Persistence boundary: not a component/system. It is an adapter around `World.storage`, serialization compatibility, and a legacy \u201conly save if key already exists\u201d policy.",
+    "verbatim_in_artifact": false
+   },
+   "dim6": {
+    "quote": "`GameSession` owns the world reference, the `ScheduledEventQueue`, `PersistenceRuntime.saveCounter`, and the seeded `RandomSource`. The ECS-like `WorldState` owns player singleton components and monster entities.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Extract save codec and save adapter, preserving the precise snapshot schema, key-gate, counter behavior, and restore log behavior.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "or makes the compatibility fa\u00e7ade/line budget less clear than ordinary typed session modules",
+    "verbatim_in_artifact": true
+   }
+  },
+  "D": {
+   "dim4": {
+    "quote": "Seeded RNG: deterministic infrastructure with a stream/state contract. It should not become a component attached to an entity; doing so risks changing draw order and replay behavior.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems should use controlled direct mutation through a single mutable world-state context.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "At every slice, `tests/characterization.test.ts` is the acceptance oracle and must not be changed.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Extract inventory and crafting, explicitly retaining mirror drift, secret wood consumption, and no-op statements where needed.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "Each migrated implementation file should remain under 120 lines. `main.ts` should remain under approximately 80 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "E": {
+   "dim4": {
+    "quote": "Seeded RNG: not a component. It is a stateful deterministic service whose draw order is observable.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems should use controlled direct mutation of a single `GameSession` passed explicitly, rather than returned commands.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "After every slice, run the unchanged characterization suite and typecheck; do not batch semantic changes across slices.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve independent mirror fields; do not normalize them from inventory.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "main.ts                         # compatibility fa\u00e7ade, target <80 lines",
+    "verbatim_in_artifact": true
+   }
+  },
+  "F": {
+   "dim4": {
+    "quote": "Seeded RNG: the RNG is a deterministic infrastructure dependency and replay resource. It must not become a component attached to gameplay entities.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "controlled direct mutation inside systems, with the world aggregate passed through a narrow `GameContext`",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Pickup increments both; crafting decrements inventory only. Do not normalize them.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "The exact split can be adjusted if individual files exceed the line budget, but no migrated source file should exceed 120 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "G": {
+   "dim4": {
+    "quote": "Seeded RNG: not a component. It is a stateful deterministic service; random-draw count and order are part of behavior.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems use controlled direct mutation of a session-owned `GameState` object, not returned command objects.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve the resulting double accounting.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "Each migrated source file should target 40\u2013110 lines; `main.ts` should remain below 80 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "H": {
+   "dim4": {
+    "quote": "Seeded RNG: it is an injected deterministic service. Treating RNG state as an ECS component would spread replay mechanics through unrelated systems.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems use controlled direct mutation of a passed state/context object.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "Run the complete characterization suite after every slice; `tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "These quirks are behavior to preserve, not defects to correct.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "Every migrated file should remain under 120 lines, with `main.ts` under approximately 80 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "I": {
+   "dim4": {
+    "quote": "Seeded RNG: not a component. It is a deterministic runtime service with serializable state and order-sensitive consumption.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems use controlled direct mutation through a narrow `SessionMutator` interface, rather than returned command objects",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "This must remain a deliberate compatibility branch.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "Every listed migrated implementation file is budgeted below 120 lines; `main.ts` remains below approximately 80 lines.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "J": {
+   "dim4": {
+    "quote": "Seeded RNG: this is an infrastructure service with replay semantics. It must preserve consumption order and serialized state, not become a component attached to arbitrary entities.",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems should use controlled direct mutation through a typed `SimulationContext`, not returned commands.",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "Run the full suite after each slice and leave `tests/characterization.test.ts` untouched.",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve `wood -= 1` and no mirror-stone decrement.",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "The split is by responsibility rather than by blindly converting every function into an ECS system.",
+    "verbatim_in_artifact": true
+   }
+  },
+  "K": {
+   "dim4": {
+    "quote": "It is a single shared sequence whose consumption order is observable and persisted",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Systems use controlled direct mutation",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "Run the suite after every individual extraction",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve the double stone drop",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "budgeted below 120 lines",
+    "verbatim_in_artifact": true
+   }
+  },
+  "L": {
+   "dim4": {
+    "quote": "it is a deterministic service whose consumption order is part of the behavior contract",
+    "verbatim_in_artifact": true
+   },
+   "dim6": {
+    "quote": "Mutation model: controlled direct mutation inside systems",
+    "verbatim_in_artifact": true
+   },
+   "dim7": {
+    "quote": "do not edit `tests/characterization.test.ts`",
+    "verbatim_in_artifact": true
+   },
+   "dim8": {
+    "quote": "Preserve the historical no-op and resulting drift",
+    "verbatim_in_artifact": true
+   },
+   "dim10": {
+    "quote": "below 120 lines where practical",
+    "verbatim_in_artifact": true
+   }
+  }
+ },
+ "transcription_corrections": [
+  "A/b4c1-terra dim10: parent hand-transcription recorded 1; batch-1 raw JSON reported 2 ('If a file approaches 120 lines, split by concern rather than relaxing the budget'); corrected here",
+  "C/b4c2-terra dim4 quote omits markdown bold from artifact ('**Persistence boundary:**'); content matches verbatim modulo emphasis markers"
+ ]
+}

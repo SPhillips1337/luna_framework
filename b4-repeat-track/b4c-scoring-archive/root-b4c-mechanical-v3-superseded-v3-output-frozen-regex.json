@@ -1,0 +1,218 @@
+{
+ "b4c1-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 0,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 8,
+  "dim3_pts": 16,
+  "cited_total": 124,
+  "fp": []
+ },
+ "b4c1-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 0
+  },
+  "dim3_count": 8,
+  "dim3_pts": 16,
+  "cited_total": 199,
+  "fp": []
+ },
+ "b4c2-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 194,
+  "fp": []
+ },
+ "b4c2-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 0,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 0
+  },
+  "dim3_count": 7,
+  "dim3_pts": 14,
+  "cited_total": 148,
+  "fp": []
+ },
+ "b4c3-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 0,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 0
+  },
+  "dim3_count": 7,
+  "dim3_pts": 14,
+  "cited_total": 79,
+  "fp": []
+ },
+ "b4c3-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 204,
+  "fp": []
+ },
+ "b4c4-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 169,
+  "fp": []
+ },
+ "b4c4-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 208,
+  "fp": []
+ },
+ "b4c5-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 0,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 0,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 7,
+  "dim3_pts": 14,
+  "cited_total": 125,
+  "fp": []
+ },
+ "b4c5-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 0,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 0,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 0,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 0,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 5,
+  "dim3_pts": 10,
+  "cited_total": 74,
+  "fp": []
+ },
+ "b4c6-terra": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 204,
+  "fp": []
+ },
+ "b4c6-luna": {
+  "dim3_traps": {
+   "a_mirror_drift": 1,
+   "b_craft_sidefx": 1,
+   "c_rng_order": 1,
+   "d_loglen_spawn": 1,
+   "e_decideUse": 1,
+   "f_KeyH_reequip": 1,
+   "g_unused_attack": 0,
+   "h_eq_duediff": 1,
+   "i_restore_logtick": 1,
+   "j_reset_worldref": 1
+  },
+  "dim3_count": 9,
+  "dim3_pts": 18,
+  "cited_total": 147,
+  "fp": []
+ }
+}

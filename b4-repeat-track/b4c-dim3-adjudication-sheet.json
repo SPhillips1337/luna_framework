@@ -1,0 +1,657 @@
+{
+ "rule": "Rule FROZEN after v1-v3 parser history; labeled exploratory: pass = the quoted passage conveys THIS trap's specific mechanism AND cites within \u00b13 lines of a legitimate mechanism site for that trap (site list below), any citation form (full/continuation/bare cell). Absent mention or mere identifier listing = fail.",
+ "trap_mechanism_sites": {
+  "a": "162-163,187-190,253-254 (mirror vs inventory double accounting, wood-=0, double stone drop)",
+  "b": "189-193,195-199 (torch attackBonus+=1 / torchBuffTicks=30; secret ration wood)",
+  "c": "84,92-99,143-148,245-260,345-348,393,412,456 (single rngState LCG; consumption order observable)",
+  "d": "344-347 (spawn gated on log.length parity)",
+  "e": "364-375,461 (decideUseStorage pre-existing-key gate)",
+  "f": "279-283 (KeyH panel-then-reequip)",
+  "g": "64-65,232-235,331-342 (def/instance attack stored but per-kind damage hardcoded)",
+  "h": "318-329 (e.at === tickCount due filter; !== removal)",
+  "i": "409-413 (restore appends 'save restored' at restored tick)",
+  "j": "441-457,459-460 (resetGame leaves worldRef)"
+ },
+ "adjudicator": "parent, reading each run's '## 6. Hidden-coupling register' section verbatim against frozen baseline; quotes above are excerpts of the register rows",
+ "results": {
+  "b4c1-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "mirrors independently mutated, may drift; :162-164,253-254"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "torch permanent attack buff + timed; ration secret wood; :187-194,195-201"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "RNG order globally shared, no reordering; :92-99"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "spawn coupled to log parity; :345-348"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "saves gated by existence of ventralis:save; :364-375"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "KeyH emits HUD before re-equip; :279-283"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "no statement that instance attack field is unused"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "death-phase row cites 319-327 but not equality semantics"
+   },
+   "i": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "boot-order row only; no restore-append entry"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame deliberately does not clear worldRef; :441-457"
+   }
+  },
+  "b4c1-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "double-accounted, keep separate; :155-167,:187-199"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "torchBuffTicks=30, permanent attackBonus+=1, secret ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "RNG consumption order observable; :92-95"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log.length%2 spawn gate; :345-348"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "decideUseStorage gate, no-op tick-10; :364-374"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "panel-first then equip(torch); :271-284"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "no unused-attack statement"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "no equality/<= statement"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore adds 'save restored' entry, downstream effects; :397-413"
+   },
+   "j": {
+    "pass": 0,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "worldRef never discussed as surviving reset"
+   }
+  },
+  "b4c2-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "intentional drift; :162-164,:186-193"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "permanent+temporary combat change; secret ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "RNG stream order behavioral"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "spawn eligibility depends on log length"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "gated by pre-existing key"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "panel before side-effectful re-equip"
+   },
+   "g": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "MonsterInstance.attack stored but unused for damage; fixed damage :333-337"
+   },
+   "h": {
+    "pass": 1,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "fires only at exact equality; :319-329"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore appends log after assigning serialized log"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame does not clear worldRef"
+   }
+  },
+  "b4c2-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "double-accounting; pickup both, craft mirrors mostly unchanged"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "torch buff+permanent attack; secret ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "one LCG stream, no extra draws"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log length controls spawning"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "decideUseStorage gates saves"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "KeyH re-equips torch; panel first"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "not stated"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "not stated"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore adds log entry changing future spawn behavior"
+   },
+   "j": {
+    "pass": 0,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "not stated"
+   }
+  },
+  "b4c3-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "mirror vs bag double-accounting"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "torch permanently raises attack, timed buff; ration secret wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "RNG order replayable, persisted/restored"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "spawn depends on log length parity"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "gated by pre-existing key"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "panel-before-re-equip"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "not stated"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "not stated"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore appends log entry after loaded log"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame retains current world reference"
+   }
+  },
+  "b4c3-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "double-accounted, do not normalize"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "wood-=0, attackBonus+=1, buff=30; ration secret wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "consumption order observable, seed7->roll5"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log.length%2 gate"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "decideUseStorage preserved; presence not validity"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "re-equip side effect, panel first"
+   },
+   "g": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "def attack values not used for damage; :63-66,331-342"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "tick-phase row only, no equality statement"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore appends log entry"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame does not clear worldRef"
+   }
+  },
+  "b4c4-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "distinct balances, not duplicates; both increment on pickup"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "wood-=0 no-op, permanent bonus+buff; asymmetric ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "exact RNG state, changing prior draws changes replay; log change alters later combat randomness"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "spawn reads log.length, tick divisibility+parity"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "pre-existing key presence gate; no write/increment without key"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "KeyH old HUD before implicit equip"
+   },
+   "g": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "stalker hard-coded 3 damage rather than MonsterInstance.attack"
+   },
+   "h": {
+    "pass": 1,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "fire only when at===tickCount; past events queued forever"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "mutates state then appends 'save restored', changes parity"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame does not clear worldRef"
+   }
+  },
+  "b4c4-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "pickup increments both; craft leaves mirrors; double accounting preserved"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "ration secretly decrements wood; torch mutates attackBonus+buff"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "same RNG stream, order observable"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log.length%2, logging changes gameplay"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "pre-existing ventralis:save gate"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "panel first then re-equip; :281-285"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "not stated"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "not stated"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore adds a log entry; :397-417"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "reset leaves worldRef, session vs state lifetime"
+   }
+  },
+  "b4c5-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "deliberate double accounting, craft differs"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "permanent attack bonus + finite buff; secret ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "order replay-critical across attack and spawn"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log parity eligibility"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "saves only when key already exists"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "old HUD before auto-equip"
+   },
+   "g": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "attack stored but unused; factory :232-235 within range"
+   },
+   "h": {
+    "pass": 1,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "equality-based removal after handling"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore adds a new log entry; 397-413"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "resetGame does not clear worldRef"
+   }
+  },
+  "b4c5-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "independently mutated; double stone drop"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "combat state change; secret ration wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "order is behavior; one LCG step per roll/spawn"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log length affects spawning"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "gated by existing key, order vs counter"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "panel first, then equip; :271-284"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "'damage differs' row only; no unused-field statement"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "not stated"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore appends 'save restored'"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "worldRef survives reset; :441-460"
+   }
+  },
+  "b4c6-terra": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "double-account independently; never derive one from other"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "wood-=0 drift, buff 30, cumulative bonus; ration secret wood"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "globally shared, order-dependent, branch consumes draw"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "spawn depends on log length; parity before RNG"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "pre-existing key gate, tick-10 no-op"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "emits HUD before re-equipping"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "not stated"
+   },
+   "h": {
+    "pass": 1,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "fire only at equality; do not change to <= or sorting"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "appends post-restore log entry; :409-413"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "reset does not clear worldRef"
+   }
+  },
+  "b4c6-luna": {
+   "a": {
+    "pass": 1,
+    "adjudicator_rationale": "register row states the mirror/inventory mechanism (independent mutation/drift/double-account), not just field names, and its citation covers the pickup/craft/drop sites",
+    "cited_passage": "double-accounted; mirrors separate; :166-167,185-188,253-254"
+   },
+   "b": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the craft's combat mutation or the secret ration wood specifically; a bare attackBonus/torchBuffTicks table cell is a listing, not a pass",
+    "cited_passage": "historical no-op drift; buff+attack :188-189; secret wood :196"
+   },
+   "c": {
+    "pass": 1,
+    "adjudicator_rationale": "requires order/stream dependence statement at rng sites; serialization-only mentions without order fail",
+    "cited_passage": "consumption order affects combat+spawn; :94-95,147,348"
+   },
+   "d": {
+    "pass": 1,
+    "adjudicator_rationale": "requires log length/parity gating spawns at 345-348",
+    "cited_passage": "log length affects spawns; :347-349"
+   },
+   "e": {
+    "pass": 1,
+    "adjudicator_rationale": "requires save gating on pre-existing key at 364-375",
+    "cited_passage": "decideUseStorage gate, no-op without key"
+   },
+   "f": {
+    "pass": 1,
+    "adjudicator_rationale": "requires panel-before-re-equip at 279-283 (range forms :271-284, :281-285 accepted as covering the site)",
+    "cited_passage": "re-equips after emitting panel; :276-280"
+   },
+   "g": {
+    "pass": 0,
+    "adjudicator_rationale": "requires the statement that stored attack values are NOT used for damage (or damage is hardcoded) with a cite at 64-65/232-235/331-342; 'damage differs' rows fail",
+    "cited_passage": "not stated"
+   },
+   "h": {
+    "pass": 0,
+    "adjudicator_rationale": "requires equality-only due-event semantics (===/not <=) at 318-329; scheduler rows without the equality mechanism fail",
+    "cited_passage": "no equality statement"
+   },
+   "i": {
+    "pass": 1,
+    "adjudicator_rationale": "requires the restore appends a log entry statement at ~409-413 (397-417/377-413 ranges cover 413)",
+    "cited_passage": "restore emits log entry, spawn-parity effect; :417 and :377-418 cover 413"
+   },
+   "j": {
+    "pass": 1,
+    "adjudicator_rationale": "requires worldRef surviving resetGame at 441-457; mere worldRef ownership listings fail",
+    "cited_passage": "worldRef survives resetGame; :441-457"
+   }
+  }
+ },
+ "per_trap_detection": {
+  "a": "12/12",
+  "b": "12/12",
+  "c": "12/12",
+  "d": "12/12",
+  "e": "12/12",
+  "f": "12/12",
+  "g": "4/12",
+  "h": "4/12",
+  "i": "11/12",
+  "j": "10/12"
+ },
+ "hard_trap_note": "Trap g (MonsterDef/MonsterInstance attack stored but per-kind damage hardcoded) caught by only 4/12 runs (b4c2-terra, b4c3-luna, b4c4-terra, b4c5-terra). Not a parser artifact: the mechanism statement is genuinely absent in the other 8 registers. g is a two-hop trap (field defined+copied, then shadowed at the damage site 333-337); it is the hardest trap on the fixture and detection of it should not drive any arm comparison.",
+ "citation_form_note": "Passage-level adjudication: per-run cited-line forms cataloged this session (full main.ts:N, continuation :N, bare numeric table cells); all forms accepted identically for both arms in the adjudication sheet.",
+ "adjudication_method": "Parent read each run's '## 6. Hidden-coupling register' verbatim against the frozen baseline regions (trap_mechanism_sites) this session. Citation parsing variants (v1-v3) used ONLY as evidence locators; final pass/fail from quoted text supporting THIS trap's mechanism within \u00b13 lines of a legitimate site, any citation form. Exploratory label per scoring-provenance.json."
+}

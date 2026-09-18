@@ -1,0 +1,367 @@
+{
+ "b4r-envelope.json": {
+  "src": "b4r-envelope.json",
+  "sha256_16": "1b34750ded8a30ed",
+  "bytes": 1971
+ },
+ "b4r-trap-citation-check.json": {
+  "src": "b4r-trap-citation-check.json",
+  "sha256_16": "49338dfb891305b7",
+  "bytes": 575
+ },
+ "b4r-baseline-main.ts": {
+  "src": "b4r-baseline-main.ts",
+  "sha256_16": "f6d883a85cce3b2a",
+  "bytes": 14435
+ },
+ "b4r1-terra-final.md": {
+  "src": "b4r1-terra-final.md",
+  "sha256_16": "c71137c994129286",
+  "bytes": 13308
+ },
+ "b4r1-luna-final.md": {
+  "src": "b4r1-luna-final.md",
+  "sha256_16": "e4207db353881b40",
+  "bytes": 17181
+ },
+ "b4r2-terra-final.md": {
+  "src": "b4r2-terra-final.md",
+  "sha256_16": "2dd3cba87aae140b",
+  "bytes": 14957
+ },
+ "b4r2-luna-final.md": {
+  "src": "b4r2-luna-final.md",
+  "sha256_16": "88e15c83777e045d",
+  "bytes": 15901
+ },
+ "b4r3-terra-final.md": {
+  "src": "b4r3-terra-final.md",
+  "sha256_16": "489d5e59a961c7ac",
+  "bytes": 16500
+ },
+ "b4r3-luna-final.md": {
+  "src": "b4r3-luna-final.md",
+  "sha256_16": "1d36f66ef53755ba",
+  "bytes": 15480
+ },
+ "b4r1-terra.jsonl": {
+  "src": "b4r1-terra.jsonl",
+  "sha256_16": "225a61b1ce3ed09a",
+  "bytes": 60077
+ },
+ "b4r1-luna.jsonl": {
+  "src": "b4r1-luna.jsonl",
+  "sha256_16": "ca19ce86ed67b79a",
+  "bytes": 65810
+ },
+ "b4r2-terra.jsonl": {
+  "src": "b4r2-terra.jsonl",
+  "sha256_16": "286f28888cf4f2c5",
+  "bytes": 45377
+ },
+ "b4r2-luna.jsonl": {
+  "src": "b4r2-luna.jsonl",
+  "sha256_16": "c3090eb2848c4590",
+  "bytes": 48711
+ },
+ "b4r3-terra.jsonl": {
+  "src": "b4r3-terra.jsonl",
+  "sha256_16": "ac33a422f541ed29",
+  "bytes": 52327
+ },
+ "b4r3-luna.jsonl": {
+  "src": "b4r3-luna.jsonl",
+  "sha256_16": "53f035eb5b0d1257",
+  "bytes": 44057
+ },
+ "rubrics-B4-ecs-audit-rubric-v2.md": {
+  "src": "rubrics/B4-ecs-audit-rubric-v2.md",
+  "sha256_16": "22b543b00f890c64",
+  "bytes": 4456
+ },
+ "tasks-B4-ecs-audit.md": {
+  "src": "fixtures/ecs-monolith-ts/tasks/B4-ecs-audit.md",
+  "sha256_16": "282bf303a5fdc55e",
+  "bytes": 5491
+ },
+ "b4r-scores-PROVISIONAL-cancelled-transcript.json": {
+  "src": "b4-repeat-track/b4r-scores-PROVISIONAL-cancelled-transcript.json",
+  "sha256_16": "c775df1c1811416e",
+  "bytes": 4270
+ },
+ "b4r-scores-parent-adjudicated.json": {
+  "src": "b4-repeat-track/b4r-scores-parent-adjudicated.json",
+  "sha256_16": "05c5e4462f2e2d83",
+  "bytes": 6285
+ },
+ "b4c1-terra-final.md": {
+  "src": "b4-repeat-track/b4c1-terra-final.md",
+  "sha256_16": "880e69b3e2d2a407",
+  "bytes": 14761
+ },
+ "b4c1-luna-final.md": {
+  "src": "b4-repeat-track/b4c1-luna-final.md",
+  "sha256_16": "1e6f771b67113a9d",
+  "bytes": 16878
+ },
+ "b4c2-terra-final.md": {
+  "src": "b4-repeat-track/b4c2-terra-final.md",
+  "sha256_16": "9c4b8931cf4cd4dc",
+  "bytes": 16560
+ },
+ "b4c2-luna-final.md": {
+  "src": "b4-repeat-track/b4c2-luna-final.md",
+  "sha256_16": "756babf2c86c03b8",
+  "bytes": 16364
+ },
+ "b4c3-terra-final.md": {
+  "src": "b4-repeat-track/b4c3-terra-final.md",
+  "sha256_16": "403ffe43c3a93ed6",
+  "bytes": 15428
+ },
+ "b4c3-luna-final.md": {
+  "src": "b4-repeat-track/b4c3-luna-final.md",
+  "sha256_16": "40ca67e7b6149eb4",
+  "bytes": 16347
+ },
+ "b4c4-terra-final.md": {
+  "src": "b4-repeat-track/b4c4-terra-final.md",
+  "sha256_16": "dfc26b71d244a32a",
+  "bytes": 17519
+ },
+ "b4c4-luna-final.md": {
+  "src": "b4-repeat-track/b4c4-luna-final.md",
+  "sha256_16": "fea3e50af2f0e578",
+  "bytes": 14108
+ },
+ "b4c5-terra-final.md": {
+  "src": "b4-repeat-track/b4c5-terra-final.md",
+  "sha256_16": "3f018d628af121cb",
+  "bytes": 15433
+ },
+ "b4c5-luna-final.md": {
+  "src": "b4-repeat-track/b4c5-luna-final.md",
+  "sha256_16": "5992a83e80740a19",
+  "bytes": 16254
+ },
+ "b4c6-terra-final.md": {
+  "src": "b4-repeat-track/b4c6-terra-final.md",
+  "sha256_16": "32375f8c46ba278f",
+  "bytes": 18706
+ },
+ "b4c6-luna-final.md": {
+  "src": "b4-repeat-track/b4c6-luna-final.md",
+  "sha256_16": "5dcf561cc9bfb0e1",
+  "bytes": 15498
+ },
+ "../b4c-blind/audit-A.md": {
+  "src": "b4c-blind/audit-A.md",
+  "sha256_16": "880e69b3e2d2a407",
+  "bytes": 14761
+ },
+ "../b4c-blind/audit-B.md": {
+  "src": "b4c-blind/audit-B.md",
+  "sha256_16": "1e6f771b67113a9d",
+  "bytes": 16878
+ },
+ "../b4c-blind/audit-C.md": {
+  "src": "b4c-blind/audit-C.md",
+  "sha256_16": "9c4b8931cf4cd4dc",
+  "bytes": 16560
+ },
+ "../b4c-blind/audit-D.md": {
+  "src": "b4c-blind/audit-D.md",
+  "sha256_16": "756babf2c86c03b8",
+  "bytes": 16364
+ },
+ "../b4c-blind/audit-E.md": {
+  "src": "b4c-blind/audit-E.md",
+  "sha256_16": "403ffe43c3a93ed6",
+  "bytes": 15428
+ },
+ "../b4c-blind/audit-F.md": {
+  "src": "b4c-blind/audit-F.md",
+  "sha256_16": "40ca67e7b6149eb4",
+  "bytes": 16347
+ },
+ "../b4c-blind/audit-G.md": {
+  "src": "b4c-blind/audit-G.md",
+  "sha256_16": "dfc26b71d244a32a",
+  "bytes": 17519
+ },
+ "../b4c-blind/audit-H.md": {
+  "src": "b4c-blind/audit-H.md",
+  "sha256_16": "fea3e50af2f0e578",
+  "bytes": 14108
+ },
+ "../b4c-blind/audit-I.md": {
+  "src": "b4c-blind/audit-I.md",
+  "sha256_16": "3f018d628af121cb",
+  "bytes": 15433
+ },
+ "../b4c-blind/audit-J.md": {
+  "src": "b4c-blind/audit-J.md",
+  "sha256_16": "5992a83e80740a19",
+  "bytes": 16254
+ },
+ "../b4c-blind/audit-K.md": {
+  "src": "b4c-blind/audit-K.md",
+  "sha256_16": "32375f8c46ba278f",
+  "bytes": 18706
+ },
+ "../b4c-blind/audit-L.md": {
+  "src": "b4c-blind/audit-L.md",
+  "sha256_16": "5dcf561cc9bfb0e1",
+  "bytes": 15498
+ },
+ "b4c-dim3-adjudication-sheet.json": {
+  "src": "b4-repeat-track/b4c-dim3-adjudication-sheet.json",
+  "sha256_16": "84ad0b10693d18fb",
+  "bytes": 31977
+ },
+ "b4c-blind-grader-output.json": {
+  "src": "b4-repeat-track/b4c-blind-grader-output.json",
+  "sha256_16": "016db94816fa3e58",
+  "bytes": 10108
+ },
+ "b4c-blind-map.json": {
+  "src": "b4-repeat-track/b4c-blind-map.json",
+  "sha256_16": "672c11256d54b8e2",
+  "bytes": 2608
+ },
+ "b4c-final-scores.json": {
+  "src": "b4-repeat-track/b4c-final-scores.json",
+  "sha256_16": "ad03142955914f8b",
+  "bytes": 20004
+ },
+ "b4c-scoring-state.json": {
+  "src": "b4-repeat-track/b4c-scoring-state.json",
+  "sha256_16": "630c90aa7c4aa0f6",
+  "bytes": 1892
+ },
+ "B4-CONFIRM-PROTOCOL.md": {
+  "src": "b4-repeat-track/B4-CONFIRM-PROTOCOL.md",
+  "sha256_16": "01382ba490dd70d7",
+  "bytes": 3449
+ },
+ "b4c-scoring-archive/b4c-mechanical-v1-output-recovered.txt": {
+  "src": "b4-repeat-track/b4c-scoring-archive/b4c-mechanical-v1-output-recovered.txt",
+  "sha256_16": "337b26a749f231aa",
+  "bytes": 734
+ },
+ "b4c-scoring-archive/b4c-mechanical-v2-output.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/b4c-mechanical-v2-output.json",
+  "sha256_16": "d1ea950adf1bbc46",
+  "bytes": 6885
+ },
+ "b4c-scoring-archive/scoring-provenance.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/scoring-provenance.json",
+  "sha256_16": "f141910eed0069ef",
+  "bytes": 7832
+ },
+ "b4c1-terra.jsonl": {
+  "src": "b4c1-terra.jsonl",
+  "sha256_16": "5445554bf6aa2f68",
+  "bytes": 62029
+ },
+ "b4c1-luna.jsonl": {
+  "src": "b4c1-luna.jsonl",
+  "sha256_16": "0f24ef9491a6ee18",
+  "bytes": 49472
+ },
+ "b4c2-terra.jsonl": {
+  "src": "b4c2-terra.jsonl",
+  "sha256_16": "12e37983fde680af",
+  "bytes": 74107
+ },
+ "b4c2-luna.jsonl": {
+  "src": "b4c2-luna.jsonl",
+  "sha256_16": "7d349d4967fd6f4a",
+  "bytes": 62005
+ },
+ "b4c3-terra.jsonl": {
+  "src": "b4c3-terra.jsonl",
+  "sha256_16": "7b1d258367e90028",
+  "bytes": 62043
+ },
+ "b4c3-luna.jsonl": {
+  "src": "b4c3-luna.jsonl",
+  "sha256_16": "39aba2ca5c045ac2",
+  "bytes": 64207
+ },
+ "b4c4-terra.jsonl": {
+  "src": "b4c4-terra.jsonl",
+  "sha256_16": "c10736a64c4a6432",
+  "bytes": 64101
+ },
+ "b4c4-luna.jsonl": {
+  "src": "b4c4-luna.jsonl",
+  "sha256_16": "e24fc879de11e01f",
+  "bytes": 46033
+ },
+ "b4c5-terra.jsonl": {
+  "src": "b4c5-terra.jsonl",
+  "sha256_16": "fe172001724a2603",
+  "bytes": 64534
+ },
+ "b4c5-luna.jsonl": {
+  "src": "b4c5-luna.jsonl",
+  "sha256_16": "7bd72c4dc464a4c7",
+  "bytes": 50575
+ },
+ "b4c6-terra.jsonl": {
+  "src": "b4c6-terra.jsonl",
+  "sha256_16": "b084c49a00c81258",
+  "bytes": 65621
+ },
+ "b4c6-luna.jsonl": {
+  "src": "b4c6-luna.jsonl",
+  "sha256_16": "001e82eeada6ad2f",
+  "bytes": 47304
+ },
+ "b4c-envelope-raw.json": {
+  "src": "b4-repeat-track/b4c-envelope-raw.json",
+  "sha256_16": "0ee8d3fef7b5d7cf",
+  "bytes": 1889
+ },
+ "b4c-scoring-archive/root-b4c-adjudication-sheet-superseded-pre-final-adjudication-candidate-quotes.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-adjudication-sheet-superseded-pre-final-adjudication-candidate-quotes.json",
+  "sha256_16": "7f08c118d2e8e1aa",
+  "bytes": 38592
+ },
+ "b4c-scoring-archive/root-b4c-blind-map-superseded-inverted-narrative-map-superseded-by-hash-derived-map.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-blind-map-superseded-inverted-narrative-map-superseded-by-hash-derived-map.json",
+  "sha256_16": "b85aa3929bde1cd7",
+  "bytes": 249
+ },
+ "b4c-scoring-archive/root-b4c-dim3-adjudication-superseded-pre-frozen-dim3-rationale-lists.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-dim3-adjudication-superseded-pre-frozen-dim3-rationale-lists.json",
+  "sha256_16": "6a3fc0dd97552d70",
+  "bytes": 24641
+ },
+ "b4c-scoring-archive/root-b4c-grader-raw-earlier-grader-transcript-subset-superseded-by-b4c-blind-grader-output.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-grader-raw-earlier-grader-transcript-subset-superseded-by-b4c-blind-grader-output.json",
+  "sha256_16": "bf58e55c38083732",
+  "bytes": 11863
+ },
+ "b4c-scoring-archive/root-b4c-judgment-sections-intermediate-extracted-section-text-for-grading.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-judgment-sections-intermediate-extracted-section-text-for-grading.json",
+  "sha256_16": "3804cf5bb905c728",
+  "bytes": 57840
+ },
+ "b4c-scoring-archive/root-b4c-mechanical-superseded-v1-output-wrong-anchors.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-mechanical-superseded-v1-output-wrong-anchors.json",
+  "sha256_16": "d1ea950adf1bbc46",
+  "bytes": 6885
+ },
+ "b4c-scoring-archive/root-b4c-mechanical-v3-superseded-v3-output-frozen-regex.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-mechanical-v3-superseded-v3-output-frozen-regex.json",
+  "sha256_16": "dca5f532d2c8d86d",
+  "bytes": 4423
+ },
+ "b4c-scoring-archive/root-b4c-registers-intermediate-extracted-register-tables.json": {
+  "src": "b4-repeat-track/b4c-scoring-archive/root-b4c-registers-intermediate-extracted-register-tables.json",
+  "sha256_16": "b9cd51726de75067",
+  "bytes": 32038
+ }
+}

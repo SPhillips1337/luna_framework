@@ -1,0 +1,5 @@
+Reading additional input from stdin...
+2026-09-18T14:04:46.606511Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:04:48.917561Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:04:51.939959Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:06:18.279982Z ERROR codex_core::tools::router: error=apply_patch verification failed: invalid patch: multiple operations target C:\Users\steph\Documents\development\luna_framework\fixtures\fixture-runs\b4a1-terra\src\main.ts

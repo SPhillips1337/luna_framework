@@ -1,0 +1,203 @@
+{
+ "provenance": "six blinded 2-artifact grader batches (dispatch deleg_eb9aed4e), delivered 2026-09-18; JSON blocks reproduced verbatim from delivery (including grader 'dimX_q' quote keys); 'note' fields carry the graders' own remarks. Scope: ALL graders scored ONLY dims 4/6/7/8/10 (weights 12+7+7+7+2=35 per frozen rubric v2; the dispatch brief's '33 pts' was an arithmetic error, preserved here, not renormalized).",
+ "batches": [
+  {
+   "ids": [
+    "A",
+    "B"
+   ],
+   "json": {
+    "A": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: retain as a stateful service, not a component. Its consumption sequence is observable through combat and wandering-spawn outcomes.",
+     "dim6": 7,
+     "dim6_q": "Systems use controlled direct mutation through a narrow typed `SystemContext`, rather than returned commands.",
+     "dim7": 7,
+     "dim7_q": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 7,
+     "dim8_q": "the duplicate `wood`/`stone` mirrors are intentional observable state, not candidates for cleanup",
+     "dim10": 2,
+     "dim10_q": "If a file approaches 120 lines, split by concern rather than relaxing the budget."
+    },
+    "B": {
+     "dim4": 12,
+     "dim4_q": "Persistence boundary: storage serialization and save-key policy are I/O concerns. Making them components would leak infrastructure into gameplay state.",
+     "dim6": 7,
+     "dim6_q": "controlled direct mutation through system-owned world ports",
+     "dim7": 7,
+     "dim7_q": "The acceptance oracle is `tests/characterization.test.ts`; it must not be edited.",
+     "dim8": 7,
+     "dim8_q": "Preserve both `stone += 2` and `inventory.stone += 2`.",
+     "dim10": 1,
+     "dim10_q": "Every migrated file should remain under 120 lines; `main.ts` should remain under approximately 80 lines."
+    }
+   },
+   "note": "grader flagged brief said 33 pts, weights sum 35, scored against rubric weights; A dim10=2 for anti-cram statement ('split by concern rather than relaxing the budget')"
+  },
+  {
+   "ids": [
+    "C",
+    "D"
+   ],
+   "json": {
+    "C": {
+     "dim4": 12,
+     "dim4_q": "Persistence boundary: not a component/system. It is an adapter around `World.storage`, serialization compatibility, and a legacy “only save if key already exists” policy.",
+     "dim6": 7,
+     "dim6_q": "`GameSession` owns the world reference, the `ScheduledEventQueue`, `PersistenceRuntime.saveCounter`, and the seeded `RandomSource`. The ECS-like `WorldState` owns player singleton components and monster entities.",
+     "dim7": 7,
+     "dim7_q": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 7,
+     "dim8_q": "Extract save codec and save adapter, preserving the precise snapshot schema, key-gate, counter behavior, and restore log behavior.",
+     "dim10": 1,
+     "dim10_q": "or makes the compatibility façade/line budget less clear than ordinary typed session modules"
+    },
+    "D": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: deterministic infrastructure with a stream/state contract. It should not become a component attached to an entity; doing so risks changing draw order and replay behavior.",
+     "dim6": 7,
+     "dim6_q": "Systems should use controlled direct mutation through a single mutable world-state context.",
+     "dim7": 7,
+     "dim7_q": "At every slice, `tests/characterization.test.ts` is the acceptance oracle and must not be changed.",
+     "dim8": 7,
+     "dim8_q": "Extract inventory and crafting, explicitly retaining mirror drift, secret wood consumption, and no-op statements where needed.",
+     "dim10": 1,
+     "dim10_q": "Each migrated implementation file should remain under 120 lines. `main.ts` should remain under approximately 80 lines."
+    }
+   },
+   "note": "both 1/2 on dim10 (no explicit anti-cram statement; C closest but framed as ECS-abandonment criterion); C dim4 quote loses markdown ** emphasis vs artifact (flag false)"
+  },
+  {
+   "ids": [
+    "E",
+    "F"
+   ],
+   "json": {
+    "E": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: not a component. It is a stateful deterministic service whose draw order is observable.",
+     "dim6": 7,
+     "dim6_q": "Systems should use controlled direct mutation of a single `GameSession` passed explicitly, rather than returned commands.",
+     "dim7": 7,
+     "dim7_q": "After every slice, run the unchanged characterization suite and typecheck; do not batch semantic changes across slices.",
+     "dim8": 7,
+     "dim8_q": "Preserve independent mirror fields; do not normalize them from inventory.",
+     "dim10": 1,
+     "dim10_q": "main.ts                         # compatibility façade, target <80 lines"
+    },
+    "F": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: the RNG is a deterministic infrastructure dependency and replay resource. It must not become a component attached to gameplay entities.",
+     "dim6": 7,
+     "dim6_q": "controlled direct mutation inside systems, with the world aggregate passed through a narrow `GameContext`",
+     "dim7": 7,
+     "dim7_q": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 7,
+     "dim8_q": "Pickup increments both; crafting decrements inventory only. Do not normalize them.",
+     "dim10": 2,
+     "dim10_q": "The exact split can be adjusted if individual files exceed the line budget, but no migrated source file should exceed 120 lines."
+    }
+   },
+   "note": "F dim10=2 (adjust split rather than overload = anti-cram mechanism); E dim10=1 caps-in-tree-only"
+  },
+  {
+   "ids": [
+    "G",
+    "H"
+   ],
+   "json": {
+    "G": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: not a component. It is a stateful deterministic service; random-draw count and order are part of behavior.",
+     "dim6": 7,
+     "dim6_q": "Systems use controlled direct mutation of a session-owned `GameState` object, not returned command objects.",
+     "dim7": 7,
+     "dim7_q": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 6,
+     "dim8_q": "Preserve the resulting double accounting.",
+     "dim10": 1,
+     "dim10_q": "Each migrated source file should target 40–110 lines; `main.ts` should remain below 80 lines."
+    },
+    "H": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: it is an injected deterministic service. Treating RNG state as an ECS component would spread replay mechanics through unrelated systems.",
+     "dim6": 6,
+     "dim6_q": "Systems use controlled direct mutation of a passed state/context object.",
+     "dim7": 7,
+     "dim7_q": "Run the complete characterization suite after every slice; `tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 7,
+     "dim8_q": "These quirks are behavior to preserve, not defects to correct.",
+     "dim10": 1,
+     "dim10_q": "Every migrated file should remain under 120 lines, with `main.ts` under approximately 80 lines."
+    }
+   },
+   "note": "only batch with sub-max judgment scores: G dim8=6 (secret ration wood only under column header), H dim6=6 (ownership tension: session 'owns storage handle' vs 'adapter owns storage access'); G dim10=1 for never stating the 120 cap (40-110 target instead)"
+  },
+  {
+   "ids": [
+    "I",
+    "J"
+   ],
+   "json": {
+    "I": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: not a component. It is a deterministic runtime service with serializable state and order-sensitive consumption.",
+     "dim6": 7,
+     "dim6_q": "Systems use controlled direct mutation through a narrow `SessionMutator` interface, rather than returned command objects",
+     "dim7": 7,
+     "dim7_q": "`tests/characterization.test.ts` is the acceptance oracle and must not be edited.",
+     "dim8": 7,
+     "dim8_q": "This must remain a deliberate compatibility branch.",
+     "dim10": 1,
+     "dim10_q": "Every listed migrated implementation file is budgeted below 120 lines; `main.ts` remains below approximately 80 lines."
+    },
+    "J": {
+     "dim4": 12,
+     "dim4_q": "Seeded RNG: this is an infrastructure service with replay semantics. It must preserve consumption order and serialized state, not become a component attached to arbitrary entities.",
+     "dim6": 7,
+     "dim6_q": "Systems should use controlled direct mutation through a typed `SimulationContext`, not returned commands.",
+     "dim7": 7,
+     "dim7_q": "Run the full suite after each slice and leave `tests/characterization.test.ts` untouched.",
+     "dim8": 7,
+     "dim8_q": "Preserve `wood -= 1` and no mirror-stone decrement.",
+     "dim10": 2,
+     "dim10_q": "The split is by responsibility rather than by blindly converting every function into an ECS system."
+    }
+   },
+   "note": "borderline grader variation preserved: I and B/K/L state the same cap numbers yet get dim10=1, while J's qualitative responsibility statement gets 2"
+  },
+  {
+   "ids": [
+    "K",
+    "L"
+   ],
+   "json": {
+    "K": {
+     "dim4": 12,
+     "dim4_q": "It is a single shared sequence whose consumption order is observable and persisted",
+     "dim6": 7,
+     "dim6_q": "Systems use controlled direct mutation",
+     "dim7": 7,
+     "dim7_q": "Run the suite after every individual extraction",
+     "dim8": 7,
+     "dim8_q": "Preserve the double stone drop",
+     "dim10": 1,
+     "dim10_q": "budgeted below 120 lines"
+    },
+    "L": {
+     "dim4": 12,
+     "dim4_q": "it is a deterministic service whose consumption order is part of the behavior contract",
+     "dim6": 7,
+     "dim6_q": "Mutation model: controlled direct mutation inside systems",
+     "dim7": 7,
+     "dim7_q": "do not edit `tests/characterization.test.ts`",
+     "dim8": 7,
+     "dim8_q": "Preserve the historical no-op and resulting drift",
+     "dim10": 1,
+     "dim10_q": "below 120 lines where practical"
+    }
+   },
+   "note": "both 1/2 dim10; L's 'where practical' softens the cap - grader gave no extra credit"
+  }
+ ]
+}

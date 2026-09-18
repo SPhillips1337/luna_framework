@@ -1,0 +1,81 @@
+{
+ "track": "B4-A0 randomized repeats, rubric v2",
+ "seed": 1238626264,
+ "generator": "random.Random(seed).shuffle on [luna,terra] per round",
+ "schedule": [
+  {
+   "round": 1,
+   "order": [
+    "terra",
+    "luna"
+   ]
+  },
+  {
+   "round": 2,
+   "order": [
+    "terra",
+    "luna"
+   ]
+  },
+  {
+   "round": 3,
+   "order": [
+    "terra",
+    "luna"
+   ]
+  }
+ ],
+ "schedule_note": "All three seeded draws came up terra->luna. Outcome of the seed, NOT balanced order randomization; report as such.",
+ "worktree_basis": "packet commit 727609c (baseline src + audit packet only; rubric never inside worktrees)",
+ "dispatch_incident": "combined 6-run loop hit tool timeout after rounds 1-2; b4r3-terra had finished writing; no orphan worker survived process sweep; b4r3-luna re-dispatched alone. Final: 6/6 valid artifacts, none overwritten.",
+ "runs": [
+  {
+   "run": "b4r1-terra",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 82,
+   "thread": "01a0b52b-b1c9-7093-aa4d-b8000117ff75",
+   "tokens": "in=78388 out=3854"
+  },
+  {
+   "run": "b4r1-luna",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 91,
+   "thread": "01a0b52c-f3b5-7f00-8669-95cc03d4684d",
+   "tokens": "in=66964 out=4562"
+  },
+  {
+   "run": "b4r2-terra",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 86,
+   "thread": "01a0b52e-5e0a-79d1-8fc0-0ef1341f4280",
+   "tokens": "in=66471 out=4134"
+  },
+  {
+   "run": "b4r2-luna",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 92,
+   "thread": "01a0b52f-b507-7902-8b22-098dd56efea7",
+   "tokens": "in=85424 out=4310"
+  },
+  {
+   "run": "b4r3-terra",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 107,
+   "thread": "01a0b531-20a3-7163-a1f9-465f5b990218",
+   "tokens": "in=145197 out=5073"
+  },
+  {
+   "run": "b4r3-luna",
+   "completed": 1,
+   "eprem": 0,
+   "elapsed_s": 105,
+   "thread": "01a0b534-e6d1-7490-8791-1e42883cf0ad",
+   "tokens": "in=38882 out=3958"
+  }
+ ]
+}

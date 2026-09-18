@@ -1,0 +1,39 @@
+{
+ "b4r1-terra": {
+  "traps_cited": 10,
+  "missing": []
+ },
+ "b4r1-luna": {
+  "traps_cited": 9,
+  "missing": [
+   "j_reset_worldref"
+  ]
+ },
+ "b4r2-terra": {
+  "traps_cited": 9,
+  "missing": [
+   "e_decideUse"
+  ]
+ },
+ "b4r2-luna": {
+  "traps_cited": 8,
+  "missing": [
+   "e_decideUse",
+   "j_reset_worldref"
+  ]
+ },
+ "b4r3-terra": {
+  "traps_cited": 10,
+  "missing": []
+ },
+ "b4r3-luna": {
+  "traps_cited": 5,
+  "missing": [
+   "a_mirror_drift",
+   "c_rng_order",
+   "e_decideUse",
+   "i_restore_logtick",
+   "j_reset_worldref"
+  ]
+ }
+}

@@ -1,0 +1,10 @@
+start_utc=2026-09-18T11:47:20Z
+end_utc=2026-09-18T11:47:58Z
+elapsed_seconds=38
+route=openai-codex:gpt-5.6-terra
+model=gpt-5.6-terra
+sandbox=danger-full-access
+head=b676373f34576adaddfc2e3f0169e57b6d73c815
+thread_id=01a0b457-b093-7590-9a65-6a18a36df5b5
+usage="usage":{"input_tokens":110023,"cached_input_tokens":99840,"cache_write_input_tokens":0,"output_tokens":1135,"reasoning_output_tokens":276}
+jsonl=b1-terra-stab.jsonl

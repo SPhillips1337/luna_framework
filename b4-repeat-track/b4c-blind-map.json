@@ -1,0 +1,68 @@
+{
+ "method": "full SHA-256 of each file; blind audit file content-hash must equal its mapped run-final hash",
+ "hash_consistent": true,
+ "runs": {
+  "b4c1-terra": {
+   "blind_id": "A",
+   "sha256": "880e69b3e2d2a407f3448e920ec0fb5d2212c8ed1074458e9e196bd55db30504"
+  },
+  "b4c1-luna": {
+   "blind_id": "B",
+   "sha256": "1e6f771b67113a9d6e386c75a924b6a879f2d1a494c155dc437bd087e59ecf17"
+  },
+  "b4c2-terra": {
+   "blind_id": "C",
+   "sha256": "9c4b8931cf4cd4dc333fc792e3d386b57acfcd839469f61d7f4c9fe17fca456a"
+  },
+  "b4c2-luna": {
+   "blind_id": "D",
+   "sha256": "756babf2c86c03b8225c6697427bd697eab92616485a9884b597d12c097ade65"
+  },
+  "b4c3-terra": {
+   "blind_id": "E",
+   "sha256": "403ffe43c3a93ed69b70a21c6ba1660a4d217845507947e10545040b7c5e88c0"
+  },
+  "b4c3-luna": {
+   "blind_id": "F",
+   "sha256": "40ca67e7b6149eb442b9a3569e1b39907b9be6353c4d8ec3d388cb4d5da96367"
+  },
+  "b4c4-terra": {
+   "blind_id": "G",
+   "sha256": "dfc26b71d244a32a170c45deb1ba7ac69c0912dfaadb848edc1511a0dc6dd1df"
+  },
+  "b4c4-luna": {
+   "blind_id": "H",
+   "sha256": "fea3e50af2f0e578f8afe3f6d974138944dee1479e6b6ce9ff87308af403c7eb"
+  },
+  "b4c5-terra": {
+   "blind_id": "I",
+   "sha256": "3f018d628af121cbea7c0f064b0697d7a709f1d853f58c2f0c8d386891459e39"
+  },
+  "b4c5-luna": {
+   "blind_id": "J",
+   "sha256": "5992a83e80740a19a6b3052fdee106fe8be80708d713345e048bf59a34133b48"
+  },
+  "b4c6-terra": {
+   "blind_id": "K",
+   "sha256": "32375f8c46ba278f0f276963a7b3c55804f24bdf498bd5030621d6d04838d205"
+  },
+  "b4c6-luna": {
+   "blind_id": "L",
+   "sha256": "5dcf561cc9bfb0e13ee26b2af98cb673a965198a0cbcf67c1284f77314ae18d2"
+  }
+ },
+ "blind_files": {
+  "A": "880e69b3e2d2a407f3448e920ec0fb5d2212c8ed1074458e9e196bd55db30504",
+  "B": "1e6f771b67113a9d6e386c75a924b6a879f2d1a494c155dc437bd087e59ecf17",
+  "C": "9c4b8931cf4cd4dc333fc792e3d386b57acfcd839469f61d7f4c9fe17fca456a",
+  "D": "756babf2c86c03b8225c6697427bd697eab92616485a9884b597d12c097ade65",
+  "E": "403ffe43c3a93ed69b70a21c6ba1660a4d217845507947e10545040b7c5e88c0",
+  "F": "40ca67e7b6149eb442b9a3569e1b39907b9be6353c4d8ec3d388cb4d5da96367",
+  "G": "dfc26b71d244a32a170c45deb1ba7ac69c0912dfaadb848edc1511a0dc6dd1df",
+  "H": "fea3e50af2f0e578f8afe3f6d974138944dee1479e6b6ce9ff87308af403c7eb",
+  "I": "3f018d628af121cbea7c0f064b0697d7a709f1d853f58c2f0c8d386891459e39",
+  "J": "5992a83e80740a19a6b3052fdee106fe8be80708d713345e048bf59a34133b48",
+  "K": "32375f8c46ba278f0f276963a7b3c55804f24bdf498bd5030621d6d04838d205",
+  "L": "5dcf561cc9bfb0e13ee26b2af98cb673a965198a0cbcf67c1284f77314ae18d2"
+ }
+}

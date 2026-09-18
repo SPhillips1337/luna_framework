@@ -1,0 +1,11 @@
+start_utc=2026-09-18T13:36:32Z
+end_utc=2026-09-18T13:38:17Z
+elapsed_seconds=105
+route=openai-codex:gpt-5.6-terra
+model=gpt-5.6-terra
+sandbox=danger-full-access
+codex_exit=0
+head=727609cc0975c839c7a99ee6392d384cfc0be98e
+thread_id=01a0b4bb-ab4d-74d2-8924-72c9391a0558
+usage="usage":{"input_tokens":78542,"cached_input_tokens":39168,"cache_write_input_tokens":0,"output_tokens":5139,"reasoning_output_tokens":762}
+jsonl=C:/Users/steph/Documents/development/luna_framework/b4-terra-audit.jsonl

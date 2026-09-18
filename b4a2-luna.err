@@ -1,0 +1,7 @@
+Reading additional input from stdin...
+2026-09-18T14:37:17.102339Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:37:19.393056Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:37:22.450231Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Client(HttpRequest(HttpRequest("http/request failed: error sending request for url (http://127.0.0.1:9010/mcp)")))
+2026-09-18T14:37:54.341340Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in C:\Users\steph\Documents\development\luna_framework\fixtures\fixture-runs\b4a2-luna\src\main.ts:
+const D: Record<MonsterKind, MonsterDef> = { crawler: { kind: "crawler", name: "Crawler", hp: 10, attack: 4 }, stalker: { kind: "stalker', name: "Stalker", hp: 16, attack: 7 } };
+export const monsters = session.monsters;

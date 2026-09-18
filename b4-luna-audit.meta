@@ -1,0 +1,11 @@
+start_utc=2026-09-18T12:48:54Z
+end_utc=2026-09-18T12:50:29Z
+elapsed_seconds=95
+route=openai-codex:gpt-5.6-luna
+model=gpt-5.6-luna
+sandbox=danger-full-access
+codex_exit=0
+head=727609cc0975c839c7a99ee6392d384cfc0be98e
+thread_id=01a0b490-1418-7d01-b0b9-841197a1be48
+usage="usage":{"input_tokens":75128,"cached_input_tokens":53504,"cache_write_input_tokens":0,"output_tokens":4473,"reasoning_output_tokens":158}
+jsonl=C:/Users/steph/Documents/development/luna_framework/b4-luna-audit.jsonl

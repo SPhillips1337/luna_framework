@@ -1,0 +1,13 @@
+# Recovered from parent console output (execute_code run, 2026-09-18). v1 = WRONG hardcoded anchors (a,g) + full-form-only parser.
+b4c1-terra: traps=8/10 miss=['g_unused_attack','h_eq_duediff']
+b4c1-luna: traps=1/10 miss=['b','c','d','e','f','g','h','i','j']
+b4c2-terra: traps=9/10 miss=['g_unused_attack']
+b4c2-luna: traps=7/10 miss=['g','h','j']
+b4c3-terra: traps=7/10 miss=['g','h','j']
+b4c3-luna: traps=9/10 miss=['g_unused_attack']
+b4c4-terra: traps=9/10 miss=['g_unused_attack']
+b4c4-luna: traps=9/10 miss=['g_unused_attack']
+b4c5-terra: traps=7/10 miss=['e','g','i']
+b4c5-luna: traps=1/10 miss=['b','c','d','e','f','g','h','i','j']
+b4c6-terra: traps=9/10 miss=['g_unused_attack']
+b4c6-luna: traps=9/10 miss=['g_unused_attack']

@@ -1,0 +1,59 @@
+{
+  "runs": [
+    {
+      "run_id": "b4r1-terra",
+      "dimensions": {"1": 12, "2": 8, "3": 20, "4": 12, "5": 8, "6": 7, "7": 7, "8": 7, "9": 7, "10": 2, "11": 10},
+      "total": 100,
+      "traps_verified": {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 1, "g": 1, "h": 1, "i": 1, "j": 1},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic; main.ts is the root pointing down to session/bootstrap/adapters/debug with no edge back into main; consistent with the proposed file tree.",
+      "notes": "All 15 module lets (main.ts:72-86) + exported monsters (297) classified; all 26 functions mapped. All 10 traps named with resolving evidence (h: 319/329 eq-only due-event matching; i: restored-tick log append; j: resetGame leaves worldRef)."
+    },
+    {
+      "run_id": "b4r1-luna",
+      "dimensions": {"1": 12, "2": 8, "3": 16, "4": 12, "5": 8, "6": 7, "7": 7, "8": 7, "9": 7, "10": 2, "11": 10},
+      "total": 96,
+      "traps_verified": {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 1, "g": 1, "h": 1, "i": 1, "j": 0},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic; main at root only, no edge into main from lower layers.",
+      "notes": "Full state/function coverage. Trap (j) resetGame-worldRef not named with resolving evidence; other nine verified."
+    },
+    {
+      "run_id": "b4r2-terra",
+      "dimensions": {"1": 12, "2": 8, "3": 18, "4": 12, "5": 8, "6": 7, "7": 7, "8": 7, "9": 7, "10": 2, "11": 10},
+      "total": 98,
+      "traps_verified": {"a": 1, "b": 1, "c": 1, "d": 1, "e": 0, "f": 1, "g": 1, "h": 1, "i": 1, "j": 1},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic; main root; bootstrap/router/systems/adapters layering consistent with tree.",
+      "notes": "Coverage complete; trap (e) decideUseStorage mentioned as save gating concept but no resolving main.ts:364 citation per corrected anchor check; nine others verified."
+    },
+    {
+      "run_id": "b4r2-luna",
+      "dimensions": {"1": 12, "2": 8, "3": 14, "4": 12, "5": 8, "6": 7, "7": 7, "8": 7, "9": 7, "10": 2, "11": 10},
+      "total": 94,
+      "traps_verified": {"a": 1, "b": 1, "c": 1, "d": 1, "e": 0, "f": 1, "g": 0, "h": 1, "i": 1, "j": 0},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic; main root; scheduler named as runtime queue (preserve, not <= rewrite).",
+      "notes": "Traps (e) and (j) absent with resolving citation; (g) unused MonsterInstance.attack not evidenced. All preserve-as-warning statements scored full dim 11."
+    },
+    {
+      "run_id": "b4r3-terra",
+      "dimensions": {"1": 12, "2": 8, "3": 20, "4": 12, "5": 8, "6": 7, "7": 7, "8": 7, "9": 7, "10": 2, "11": 10},
+      "total": 100,
+      "traps_verified": {"a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 1, "g": 1, "h": 1, "i": 1, "j": 1},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic; main is the compatibility facade at the root; persistence/systems point to session/domain, never back into main (parent re-parse confirmed no main-into edge).",
+      "notes": "Full coverage; secret wood cost preserve-pin cited against craft region; all ten traps verified with resolving evidence."
+    },
+    {
+      "run_id": "b4r3-luna",
+      "dimensions": {"1": 10, "2": 8, "3": 8, "4": 10, "5": 8, "6": 6, "7": 7, "8": 6, "9": 7, "10": 0, "11": 10},
+      "total": 80,
+      "traps_verified": {"a": 0, "b": 0, "c": 0, "d": 1, "e": 0, "f": 1, "g": 0, "h": 0, "i": 0, "j": 0},
+      "false_positive_findings": [],
+      "graph_check": "Acyclic but coarser than the other five; main at root.",
+      "notes": "Thinnest artifact of the six. Missing: mirror/inventory drift (a), craft side effects/secret wood (b), RNG order (c), decideUseStorage (e), equality-only due matching (h), restored-tick log attribution (i), resetGame worldRef (j). Some bindings lack explicit destinations; line-budget dimension not addressed. No behavior-breaking proposals."
+    }
+  ],
+  "grading_method_note": "Each run graded independently against rubric v2 (11 dims, 100 pts); no cross-run averaging; dim 9 = 7 for all six by stated parent verification; preserve-as-warning statements (e.g. do not switch === to <=) earned full dim-11 marks; trap (h) scored against the real baseline anchor e.at === tickCount at 319/329."
+}

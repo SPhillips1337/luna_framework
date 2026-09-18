@@ -1,0 +1,1193 @@
+{
+ "b4c1-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 14,
+   "top_quotes": [
+    "| Resource mirrors and inventory are independently mutated and may drift. | `src/main.ts:162-164`, `186-201`, `253-254`; tests pin this at `tests/characteriz",
+    "| Torch crafting consumes bag inputs but deliberately leaves mirror counters unchanged; it also sets a timed buff and permanently increments attack bonus. | `src/main.ts:187-194`; tests `57-64`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 0,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| `attackBonus` | Proposed Component data | `CombatStats.attackBonus` |"
+   ],
+   "cite_forms": []
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 28,
+   "top_quotes": [
+    "| RNG order is globally shared between combat and tick-20 wandering spawns. | `src/main.ts:92-99`, `345-348`. No system may introduce, remove, or"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Wandering spawn is coupled to log parity, so unrelated messages can change spawn occurrence and subsequent RNG state. | `src/main.ts:345-348`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Periodic saves are gated by existence of `ventralis:save`, rather than merely by a world/storage capability. | `src/main.ts:364-375`; tests `124-140`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| KeyH emits the HUD before conditionally equipping a torch; panel text must therefore show fists before the subsequent re-equip. | `src/main.ts:279-283`; tests `168-190`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "2. Extract pure inventory weight/capacity helpers and pickup logic. Preserve mirror writes exactly. Run both checks."
+   ],
+   "cite_forms": []
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 3,
+   "top_quotes": [
+    "| `restore` | writes restored fields and monster contents | log append |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` deliberately does not clear `worldRef`; `initGame` replaces it later. | `src/main.ts:441-457`, `459-460`. Preserve unless tests and compatibility requirements are intentionally"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  }
+ },
+ "b4c1-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 16,
+   "top_quotes": [
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:155-167`, `:187-199` | Keep raw `wood`/`stone` separate from inventory. Torch craft cons",
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:155-167`, `:187-199` | Keep raw `wood`/`stone` separate from inventory. Torch craft consumes inventory only; ration craft"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont",
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Torch craft changes combat state | `:193-195` | Preserve `torchBuffTicks = 30` and permanent `attackBonus += 1`. |",
+    "| Torch craft changes combat state | `:193-195` | Preserve `torchBuffTicks = 30` and permanent `attackBonus += 1`. |"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 29,
+   "top_quotes": [
+    "| `rngState` | `:84` | Retained runtime state | Seeded `RandomSource`; snapshot/restore it |",
+    "| `rngState` | `:84` | Retained runtime state | Seeded `RandomSource`; snapshot/restore it |"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Spawn depends on log length | `:345-348` | Preserve `log.length % 2 === 0` gating and ensure logging occurs in the same order. |",
+    "| Spawn depends on log length | `:345-348` | Preserve `log.length % 2 === 0` gating and ensure logging occurs in the same order. |"
+   ],
+   "cite_forms": [
+    "cont"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Periodic saves are gated by `decideUseStorage` | `:364-374`, `:350-352` | No save-key means tick-10 save is a no-op; existing key enables saves. |",
+    "| Periodic saves are gated by `decideUseStorage` | `:364-374`, `:350-352` | No save-key means tick-10 save is a no-op; existing key enables saves. |"
+   ],
+   "cite_forms": [
+    "cont"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 0,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `onKey` | Input and state | Delegates to actions | Panel/action output | KeyH has re-equip coupling |"
+   ],
+   "cite_forms": [
+    "cont"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `rollInt` | RNG source | RNG indirectly | None | Consumes exactly one RNG value |"
+   ],
+   "cite_forms": [
+    "cont"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| `restore` | Serialized data | Nearly every state binding, monsters, log | Adds \u201csave restored\u201d log entry | Restores RNG sequence |"
+   ],
+   "cite_forms": [
+    "cont"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  }
+ },
+ "b4c2-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 9,
+   "top_quotes": [
+    "| Resource mirrors and inventory intentionally drift | pickup increments both at `src/main.ts:162-164`; torch consumes only inventory at `:186-193`; tests pi",
+    "consumes only inventory at `:186-193`; tests pin it at `tests/characterization.test.ts:66-75` | Separate `InventoryComponent` and `ResourceMirrorComponent`; never \u201cnormalize\u201d them. |"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont",
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "rmanently and temporarily | `src/main.ts:191-193`; combat reads both at `:143-148`; test `tests/characterization.test.ts:73-74` | Preserve `attackBonus += 1` and buff reset to 30. |"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont",
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 13,
+   "top_quotes": [
+    "| `rngState` | `:84` | Retained runtime state | seeded `RandomSource` owned by `GameSession` |",
+    "| `rngState` | `:84` | Retained runtime state | seeded `RandomSource` owned by `GameSession` |"
+   ],
+   "cite_forms": [
+    "bare",
+    "cont",
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Spawn eligibility depends on log length | `src/main.ts:345-348` | Tick system reads the log component\u2019s current length at this exact phase. |"
+   ],
+   "cite_forms": [
+    "cont",
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Periodic save is gated by pre-existing storage key | `src/main.ts:364-374`; tests `tests/characterization.test.ts:160-175` | `SaveAdapter.decideUseStorage` rema",
+    "| Periodic save is gated by pre-existing storage key | `src/main.ts:364-374`; tests `tests/characterization.test.ts:160-175` | `SaveAdapter.decideUseStorage` remains explicit and is called before increment/write. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| KeyH emits panel before a side-effectful re-equip | `src/main.ts:279-283`; ordering pin `tests/characterization.test.ts:201-220` | Input router",
+    "| KeyH emits panel before a side-effectful re-equip | `src/main.ts:279-283`; ordering pin `tests/characterization.test.ts:201-220` | Input router must render first, then equip only if fists p"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "There are no dead/redundant mutable module bindings. Some fields are presently underused\u2014`MonsterInstance.attack`, `World.canvas`, and `World.clock`\u2014but removing them would be an observable/API change outside this preser"
+   ],
+   "cite_forms": [
+    "cont",
+    "full"
+   ]
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Scheduled events fire only at exact equality; overdue events are removed only when their exact tick occurs | `src/main.ts:319-329` | Preserve equality semantics and queue filtering. |",
+    "heduled events fire only at exact equality; overdue events are removed only when their exact tick occurs | `src/main.ts:319-329` | Preserve equality semantics and queue filtering. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| `restore` | W serialized fields and live monster array | \u2014 | \u2014 | \u2014 | appends restore log |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` does not clear `worldRef` | reset list `src/main.ts:441-456`; world assignment only at `:459-460` | Preserve unless a separately authorized behavior change is made."
+   ],
+   "cite_forms": [
+    "cont",
+    "full"
+   ]
+  }
+ },
+ "b4c2-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 20,
+   "top_quotes": [
+    "| Resource mirrors and inventory double-accounting | `src/main.ts:162-164`, `186-188` | Pickup increments both; crafting consumes inventory but intentionally",
+    "| Resource mirrors and inventory double-accounting | `src/main.ts:162-164`, `186-188` | Pickup increments both; crafting consumes inventory but intentionally leaves most mirrors unchanged"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 8,
+   "top_quotes": [
+    "| Secret ration wood cost | `src/main.ts:195-199` | Ration crafting decrements mirror `wood` by one, while inventory wood was already consumed. |",
+    "| Torch side effects | `src/main.ts:189-194` | Torch sets `torchBuffTicks=30` and permanently increments `attackBonus`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 41,
+   "top_quotes": [
+    "| RNG consumption order | `src/main.ts:92-99`, `143-148`, `345-347` | Combat and wandering spawn share one LCG stream; no extra draws may be intr"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Log length controls spawning | `src/main.ts:345-348` | Spawn occurs only at tick multiples of 20 with even `log.length`; logging changes gameplay. |",
+    "| Log length controls spawning | `src/main.ts:345-348` | Spawn occurs only at tick multiples of 20 with even `log.length`; logging changes gameplay. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `decideUseStorage` gates saves | `src/main.ts:364-375` | Tick-10 saves are no-ops unless the save key already exists. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 8,
+   "top_quotes": [
+    "| KeyH re-equips torch | `src/main.ts:279-283` | Panel emission happens first; then fists plus torch in inventory triggers `equip(\"torch\")`. |",
+    "| KeyH re-equips torch | `src/main.ts:279-283` | Panel emission happens first; then fists plus torch in inventory triggers `equip(\"torch\")`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Restore adds a log entry | `src/main.ts:409-413` | `save restored` changes subsequent log length and potentially future spawn behavior. |",
+    "| Restore adds a log entry | `src/main.ts:409-413` | `save restored` changes subsequent log length and potentially future spawn behavior. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  }
+ },
+ "b4c3-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 13,
+   "top_quotes": [
+    "| Resource mirror versus bag double-accounting | pickup updates both at `src/main.ts:162-164`; crafting selectively changes mirrors at `187-201`; snapshot pe",
+    "| Resource mirror versus bag double-accounting | pickup updates both at `src/main.ts:162-164`; crafting selectively changes mirrors at `187-201`; snapshot persists both at `381-386` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 8,
+   "top_quotes": [
+    "| Torch crafting permanently raises attack and starts timed buff | `src/main.ts:191-193`; attack reads both at `143-148` | Preserve `attackBonus += 1`, `torchBuffTicks = 30`, and combat calculation. |",
+    "ing permanently raises attack and starts timed buff | `src/main.ts:191-193`; attack reads both at `143-148` | Preserve `attackBonus += 1`, `torchBuffTicks = 30`, and combat calculation. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 24,
+   "top_quotes": [
+    "| `rngState` | `src/main.ts:84` | Retained runtime state (world/session) | `SeededRandom` service, serializable state |",
+    "| `rngState` | `src/main.ts:84` | Retained runtime state (world/session) | `SeededRandom` service, serializable state |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Spawn depends on log length parity | `src/main.ts:345-347` | Keep log append timing and use current log length before spawning. |",
+    "| Spawn depends on log length parity | `src/main.ts:345-347` | Keep log append timing and use current log length before spawning. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Save is gated by pre-existing storage key | `src/main.ts:364-375`; periodic invocation `350-352` | Save remains a no-op without `\"ventralis:save\"`; inc"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| KeyH panel-before-re-equip quirk | `src/main.ts:279-283` | Emit panel showing fists first; then equip torch and emit its text. |",
+    "| KeyH panel-before-re-equip quirk | `src/main.ts:279-283` | Emit panel showing fists first; then equip torch and emit its text. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| Ration secretly consumes mirror wood but not mirror stone | `src/main.ts:195-199` | Preserve exactly, including `inventory.stone -= 0`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Restore appends a log entry after loaded log | `src/main.ts:409-413` | Preserve post-restore `say(\"save restored\")`; init\u2019s later wake log remains log-only. |",
+    "| Restore appends a log entry after loaded log | `src/main.ts:409-413` | Preserve post-restore `say(\"save restored\")`; init\u2019s later wake log remains log-only. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  }
+ },
+ "b4c3-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 20,
+   "top_quotes": [
+    "| Resource mirrors and inventory are double-accounted | `main.ts:162-164`, `186-188` | Pickup increments both; crafting decrements inventory only. Do not nor",
+    "| Resource mirrors and inventory are double-accounted | `main.ts:162-164`, `186-188` | Pickup increments both; crafting decrements inventory only. Do not normalize them. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Torch crafting leaves mirror counters unchanged | `main.ts:189-194` | Preserve `wood -= 0`, inventory consumption, `attackBonus += 1`, and `torchBuffTicks = 30`. |",
+    "Torch crafting leaves mirror counters unchanged | `main.ts:189-194` | Preserve `wood -= 0`, inventory consumption, `attackBonus += 1`, and `torchBuffTicks = 30`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 36,
+   "top_quotes": [
+    "| `rngState` | `main.ts:84` | Retained runtime state | Seeded `RandomSource`; snapshot/restore-visible |",
+    "| `rngState` | `main.ts:84` | Retained runtime state | Seeded `RandomSource`; snapshot/restore-visible |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 3,
+   "top_quotes": [
+    "| Spawn behavior depends on log length | `main.ts:345-348` | Preserve `log.length % 2 === 0` gating and exact log append order. |",
+    "| Spawn behavior depends on log length | `main.ts:345-348` | Preserve `log.length % 2 === 0` gating and exact log append order. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Periodic saves are gated by existing save key | `main.ts:364-374` | Preserve `decideUseStorage`; tick 10 is a no-op without the key. |",
+    "| Periodic saves are gated by existing save key | `main.ts:364-374` | Preserve `decideUseStorage`; tick 10 is a no-op without the key. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 8,
+   "top_quotes": [
+    "| KeyH has a re-equip side effect | `main.ts:279-283` | Emit panel first, then equip torch when fists plus torch are present. |",
+    "| KeyH has a re-equip side effect | `main.ts:279-283` | Emit panel first, then equip torch when fists plus torch are present. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 1,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Stalker/crawler attack values in definitions are not used for damage | `main.ts:63-66`, `331-342` | Preserve actual hard-coded damage behavior. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Spawn behavior depends on log length | `main.ts:345-348` | Preserve `log.length % 2 === 0` gating and exact log append order. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| Restore appends a log entry | `main.ts:409-413` | Preserve post-restore log mutation. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` does not clear `worldRef` | `main.ts:441-456` | Preserve unless an explicit compatibility decision is made; current tests rely on subsequent init behavior. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  }
+ },
+ "b4c4-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 12,
+   "top_quotes": [
+    "| Torch crafting removes inventory ingredients but deliberately leaves mirror counts unchanged via `wood -= 0`; it also gives a permanent attack bonus and a 30-tick buff. | `src/main.ts:186-193` |",
+    "| Torch crafting removes inventory ingredients but deliberately leaves mirror counts unchanged via `wood -= 0`; it also gives a permanent attack bonus and a 30-tick buff. | `src/main.ts:186-193` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 0,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| `attackBonus` (79) | Proposed Component data | `components/combat.ts` |"
+   ],
+   "cite_forms": []
+  },
+  "c_rng_order": {
+   "candidate_pass": 0,
+   "n_mentions": 31,
+   "top_quotes": [
+    "| `rngState` (84) | Retained runtime state (world/session) | `runtime/seeded-rng.ts`; stateful seeded service |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Wandering spawn consumes RNG only if both tick divisibility and log parity pass. A log-message change can therefore alter all later combat randomness. | `src/main.ts:345-348` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `decideUseStorage` | `persistence/storage-adapter.ts` |"
+   ],
+   "cite_forms": []
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 0,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `onKey` | R `alive`, equipment, inventory | panel/text indirectly | indirect through attack | indirect; KeyH panel snapshots state before re-equip log |"
+   ],
+   "cite_forms": []
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Stalker attack uses hard-coded 3 damage rather than `MonsterInstance.attack`; crawler attacks only on every third tick. | `src/main.ts:332-342` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 1,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Scheduled events fire only when `at === tickCount`; events scheduled in the past remain queued forever, and all due events are processed before queue removal. | `src/main.ts:319-3"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| `restore` | W serialized gameplay state and monsters/RNG/log | reads parsed string | \u2014 | appends \u201csave restored\u201d after replacement |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` | W all resettable state except `worldRef` | \u2014 | sets seed | clears log |"
+   ],
+   "cite_forms": []
+  }
+ },
+ "b4c4-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 0,
+   "n_mentions": 15,
+   "top_quotes": [
+    "| `wood` | Component data | Retain as legacy resource mirror; distinct from inventory |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 0,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `attackBonus` | Component data | Combat progression component; craftable torch mutates it |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 32,
+   "top_quotes": [
+    "| `src/main.ts:92-99`, `src/main.ts:143-151` | Combat and spawn consume the same RNG stream; consumption order is observable. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `src/main.ts:345-347` | Spawn depends on `log.length % 2`, so logging changes gameplay. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| `src/main.ts:352-354`, `src/main.ts:364-374` | Periodic persistence is gated by the pre-existing `ventralis:save` key through `decideUseStorage`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| `src/main.ts:281-285` | KeyH emits the panel first, then re-equips a torch when fists are equipped. |",
+    "| `src/main.ts:281-285` | KeyH emits the panel first, then re-equips a torch when fists are equipped. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "2. Extract pure inventory queries and static definitions. Preserve mirror counters and capacity calculations exactly."
+   ],
+   "cite_forms": []
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `restore` | Writes nearly all gameplay globals and monsters | None; calls `say` | Adds restore log entry |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| `worldRef` | Retained runtime state | Session/runtime context; not component data |"
+   ],
+   "cite_forms": []
+  }
+ },
+ "b4c5-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 11,
+   "top_quotes": [
+    "| Resource mirrors and inventory deliberately double-account pickups, but their craft behavior differs. | Pickup increments mirror and bag at `main.ts:162-16",
+    "| Resource mirrors and inventory deliberately double-account pickups, but their craft behavior differs. | Pickup increments mirror and bag at `main.ts:162-164`; crafting removes only inventory at `186"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 0,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| `attackBonus` | `main.ts:79` | Proposed Component data | `CombatStats.attackBonus` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 26,
+   "top_quotes": [
+    "| `rngState` | `main.ts:84` | Retained runtime state | `SeededRandom.state` |",
+    "| `rngState` | `main.ts:84` | Retained runtime state | `SeededRandom.state` |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| Wandering-spawn eligibility depends on log parity. | `main.ts:345-347`; log-producing behavior therefore changes spawn/RNG evolution. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 0,
+   "n_mentions": 3,
+   "top_quotes": [
+    "| `decideUseStorage` | `persistence/storage-save-adapter.ts` |"
+   ],
+   "cite_forms": []
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| KeyH emits the old HUD panel before auto-equipping a carried torch. | `main.ts:279-283`. This must remain a deliberate compatibility branch. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| `MonsterInstance.attack` is stored but unused in combat; retain in snapshots/entity shape for compatibility. | definition `291-295`, factory `232-235`, snapshot `3"
+   ],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| Event removal is equality-based and occurs after handling, including all same-tick events. | `main.ts:319-329`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| `restore` | W serialized state and monster array | parses input; appends \u201csave restored\u201d log |"
+   ],
+   "cite_forms": []
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 1,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` does not clear `worldRef`; `initGame` replaces it. | `main.ts:441-457` versus `459-466`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  }
+ },
+ "b4c5-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 18,
+   "top_quotes": [
+    "| Resource mirrors and inventory are independently mutated | `src/main.ts:163`, `187-199` | Pickup increments both; crafting consumes inventory but leaves to",
+    "d inventory are independently mutated | `src/main.ts:163`, `187-199` | Pickup increments both; crafting consumes inventory but leaves torch mirror counters unchanged; ration secretly decrements mirror wood only. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 0,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| `attackBonus` | 79 | Component data | `CombatModifiers` component |"
+   ],
+   "cite_forms": []
+  },
+  "c_rng_order": {
+   "candidate_pass": 0,
+   "n_mentions": 37,
+   "top_quotes": [
+    "| `rngState` | 84 | Retained runtime state | Seeded RNG service; serialized for replay |"
+   ],
+   "cite_forms": []
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 0,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| `tick` | All simulation state, log | HP, buffs, queue, monsters, RNG, saves | Events/output/storage | At spawn only | Log length gates spawn |"
+   ],
+   "cite_forms": []
+  },
+  "e_decideUse": {
+   "candidate_pass": 0,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| `decideUseStorage` | Persistence policy adapter |"
+   ],
+   "cite_forms": []
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 0,
+   "n_mentions": 3,
+   "top_quotes": [
+    "| KeyH re-equips torch | `271-284` | Panel emits first, then H may call `equip(\"torch\")`; preserve output order. |"
+   ],
+   "cite_forms": []
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| Log length affects spawning | `345-347` | Preserve `log.length % 2 === 0` as a spawn gate; logging changes can alter future monsters. |"
+   ],
+   "cite_forms": []
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| `restore` | Serialized data | Nearly every gameplay binding and monsters | None; calls `say` | Restores RNG state | Adds \u201csave restored\u201d log |"
+   ],
+   "cite_forms": []
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| `worldRef` survives reset | `441-460` | Do not implicitly clear the session reference unless compatibility behavior is intentionally changed and justified. |"
+   ],
+   "cite_forms": []
+  }
+ },
+ "b4c6-terra": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 12,
+   "top_quotes": [
+    "| Resource mirrors and inventory double-account independently | `src/main.ts:162-164`, `186-201`, `253-254` | Keep `wood`/`stone` mirrors distinct from inven",
+    "| Resource mirrors and inventory double-account independently | `src/main.ts:162-164`, `186-201`, `253-254` | Keep `wood`/`stone` mirrors distinct from inventory; never derive one from th"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "Torch crafting preserves mirror drift and changes combat permanently | `src/main.ts:187-194` | Preserve `wood -= 0`, inventory-only costs, `torchBuffTicks = 30`, and cumulative `attackBonus += 1`. |",
+    "and changes combat permanently | `src/main.ts:187-194` | Preserve `wood -= 0`, inventory-only costs, `torchBuffTicks = 30`, and cumulative `attackBonus += 1`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 23,
+   "top_quotes": [
+    "| RNG sequence is globally shared and order-dependent | `src/main.ts:92-99`, `143-148`, `345-348`, `377-394` | Preserve one LCG stream, exact ari"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Spawn depends on log length, not only game state/tick | `src/main.ts:345-348` | Preserve log append order and test parity at tick 20 before consuming spawn RNG. |",
+    "| Spawn depends on log length, not only game state/tick | `src/main.ts:345-348` | Preserve log append order and test parity at tick 20 before consuming spawn RNG. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 5,
+   "top_quotes": [
+    "| Periodic saving is gated by pre-existing save key | `src/main.ts:364-375`, `350-353` | `decideUseStorage` must remain the gate; tick 10 is a no-op without the key. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| KeyH emits HUD before re-equipping torch | `src/main.ts:279-284` | Retain both the legacy re-equip quirk and panel-first ordering. |",
+    "| KeyH emits HUD before re-equipping torch | `src/main.ts:279-284` | Retain both the legacy re-equip quirk and panel-first ordering. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 1,
+   "n_mentions": 4,
+   "top_quotes": [
+    "| Scheduled events fire only at equality, then are removed | `src/main.ts:319-329` | Do not change to `<=`, sorting, or delayed removal. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Restore appends a post-restore log entry | `src/main.ts:409-413` | Retain this append even though debug output omits log content. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 2,
+   "top_quotes": [
+    "| `resetGame` | W all reset fields except `worldRef` | none | none | clears log |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  }
+ },
+ "b4c6-luna": {
+  "a_mirror_drift": {
+   "candidate_pass": 1,
+   "n_mentions": 21,
+   "top_quotes": [
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:166-167`, `src/main.ts:185-188`, `src/main.ts:201-202` | Preserve separate mirror counte",
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:166-167`, `src/main.ts:185-188`, `src/main.ts:201-202` | Preserve separate mirror counters and inventory mutation paths. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "b_craft_sidefx": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| Crafting changes combat state | `src/main.ts:188-189` | Preserve `attackBonus += 1` and `torchBuffTicks = 30`. |",
+    "| Crafting changes combat state | `src/main.ts:188-189` | Preserve `attackBonus += 1` and `torchBuffTicks = 30`. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "c_rng_order": {
+   "candidate_pass": 1,
+   "n_mentions": 34,
+   "top_quotes": [
+    "| RNG consumption order affects combat and spawn behavior | `src/main.ts:94-95`, `src/main.ts:147`, `src/main.ts:348` | Centralize RNG but preser",
+    "| RNG consumption order affects combat and spawn behavior | `src/main.ts:94-95`, `src/main.ts:147`, `src/main.ts:348` | Centralize RNG but preserve call order exactly. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "d_loglen_spawn": {
+   "candidate_pass": 1,
+   "n_mentions": 7,
+   "top_quotes": [
+    "| Log length affects wandering spawns | `src/main.ts:347-349` | Spawn logic must read the same log length at the same point. |",
+    "| Log length affects wandering spawns | `src/main.ts:347-349` | Spawn logic must read the same log length at the same point. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "e_decideUse": {
+   "candidate_pass": 1,
+   "n_mentions": 6,
+   "top_quotes": [
+    "| `decideUseStorage` gates periodic saves | `src/main.ts:364-367`, `src/main.ts:352-353` | Preserve no-op saves when the key is absent. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "f_KeyH_reequip": {
+   "candidate_pass": 1,
+   "n_mentions": 10,
+   "top_quotes": [
+    "| KeyH re-equips a torch after emitting the panel | `src/main.ts:276-280` | Preserve panel-first, equipment-output-second ordering. |",
+    "| KeyH re-equips a torch after emitting the panel | `src/main.ts:276-280` | Preserve panel-first, equipment-output-second ordering. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "g_unused_attack": {
+   "candidate_pass": 0,
+   "n_mentions": 0,
+   "top_quotes": [],
+   "cite_forms": []
+  },
+  "h_eq_duediff": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "rder affects combat and spawn behavior | `src/main.ts:94-95`, `src/main.ts:147`, `src/main.ts:348` | Centralize RNG but preserve call order exactly. |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "i_restore_logtick": {
+   "candidate_pass": 0,
+   "n_mentions": 3,
+   "top_quotes": [
+    "| `restore` | Writes nearly every state binding and monsters | Emits restore log | Restores RNG state |"
+   ],
+   "cite_forms": [
+    "full"
+   ]
+  },
+  "j_reset_worldref": {
+   "candidate_pass": 0,
+   "n_mentions": 1,
+   "top_quotes": [
+    "| `resetGame` | Resets all state except `worldRef` | None | Seed initializes RNG |"
+   ],
+   "cite_forms": []
+  }
+ }
+}

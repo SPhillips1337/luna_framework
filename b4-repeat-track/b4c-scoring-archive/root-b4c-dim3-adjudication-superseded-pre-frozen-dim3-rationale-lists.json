@@ -1,0 +1,724 @@
+{
+ "b4c1-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are independently mutated and may drift. | `src/main.ts:162-164`, `186-201`, `253-254`; tests pin this at `tests/characterization.test.ts:57-72`. |"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Torch crafting consumes bag inputs but deliberately leaves mirror counters unchanged; it also sets a timed buff and permanently increments attack bonus. | `src/main.ts:187-194`; tests `57-64`. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG order is globally shared between combat and tick-20 wandering spawns. | `src/main.ts:92-99`, `345-348`. No system may introduce, remove, or reorder random draws. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Wandering spawn is coupled to log parity, so unrelated messages can change spawn occurrence and subsequent RNG state. | `src/main.ts:345-348`. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saves are gated by existence of `ventralis:save`, rather than merely by a world/storage capability. | `src/main.ts:364-375`; tests `124-140`. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH emits the HUD before conditionally equipping a torch; panel text must therefore show fists before the subsequent re-equip. | `src/main.ts:279-283`; tests `168-190`. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "- Scheduled-event queue: retain as an ordered session-owned queue, not entities/components. Exact-tick filtering and post-processing removal are part of behavior."
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | writes restored fields and monster contents | log append |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `resetGame` deliberately does not clear `worldRef`; `initGame` replaces it later. | `src/main.ts:441-457`, `459-460`. Preserve unless tests and compatibility requirements are intentionally revised. "
+   ]
+  }
+ },
+ "b4c1-luna": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:155-167`, `:187-199` | Keep raw `wood`/`stone` separate from inventory. Torch craft consumes inventory only; ration craft secretly "
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Torch craft changes combat state | `:193-195` | Preserve `torchBuffTicks = 30` and permanent `attackBonus += 1`. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order is observable | `:92-95`, `:143-149`, `:346-348` | Preserve one-for-one RNG calls and action/tick ordering; snapshot/restore RNG state. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Spawn depends on log length | `:345-348` | Preserve `log.length % 2 === 0` gating and ensure logging occurs in the same order. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saves are gated by `decideUseStorage` | `:364-374`, `:350-352` | No save-key means tick-10 save is a no-op; existing key enables saves. |"
+   ]
+  },
+  "f": {
+   "pass_": 0,
+   "rationale": [
+    "| KeyH re-equips torch after emitting panel | `:271-284` | Preserve panel-first, then `equip(\"torch\")`, including emitted output order. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "- Scheduled-event queue: it is temporal infrastructure with exact-tick consumption and filtering semantics. Treating queued events as entities risks changing ordering and removal behavior."
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | Serialized data | Nearly every state binding, monsters, log | Adds \u201csave restored\u201d log entry | Restores RNG sequence |"
+   ]
+  },
+  "j": {
+   "pass_": 0,
+   "rationale": []
+  }
+ },
+ "b4c2-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory intentionally drift | pickup increments both at `src/main.ts:162-164`; torch consumes only inventory at `:186-193`; tests pin it at `tests/characterization.test.ts:66-"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Ration secretly consumes mirror wood, not mirror stone | `src/main.ts:195-198`; test `:77-83` | Preserve exact branch-specific mirror mutation. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG stream order is behavioral | LCG mutates state `src/main.ts:92-98`; attack consumes it `:245-246`; spawn consumes it `:345-348`; seed pin `tests/characterization.test.ts:139-145` | One session R"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Spawn eligibility depends on log length | `src/main.ts:345-348` | Tick system reads the log component\u2019s current length at this exact phase. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic save is gated by pre-existing storage key | `src/main.ts:364-374`; tests `tests/characterization.test.ts:160-175` | `SaveAdapter.decideUseStorage` remains explicit and is called before incr"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH emits panel before a side-effectful re-equip | `src/main.ts:279-283`; ordering pin `tests/characterization.test.ts:201-220` | Input router must render first, then equip only if fists plus torch"
+   ]
+  },
+  "g": {
+   "pass_": 1,
+   "rationale": [
+    "| `MonsterInstance.attack` is stored but unused for damage | definition `src/main.ts:291-295`; fixed damage at `:333-337` | Retain schema/field; do not substitute it into combat. |"
+   ]
+  },
+  "h": {
+   "pass_": 1,
+   "rationale": [
+    "| Scheduled events fire only at exact equality; overdue events are removed only when their exact tick occurs | `src/main.ts:319-329` | Preserve equality semantics and queue filtering. |"
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | W serialized fields and live monster array | \u2014 | \u2014 | \u2014 | appends restore log |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `resetGame` does not clear `worldRef` | reset list `src/main.ts:441-456`; world assignment only at `:459-460` | Preserve unless a separately authorized behavior change is made. |"
+   ]
+  }
+ },
+ "b4c2-luna": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory double-accounting | `src/main.ts:162-164`, `186-188` | Pickup increments both; crafting consumes inventory but intentionally leaves most mirrors unchanged. |"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Secret ration wood cost | `src/main.ts:195-199` | Ration crafting decrements mirror `wood` by one, while inventory wood was already consumed. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order | `src/main.ts:92-99`, `143-148`, `345-347` | Combat and wandering spawn share one LCG stream; no extra draws may be introduced. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Log length controls spawning | `src/main.ts:345-348` | Spawn occurs only at tick multiples of 20 with even `log.length`; logging changes gameplay. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| `decideUseStorage` gates saves | `src/main.ts:364-375` | Tick-10 saves are no-ops unless the save key already exists. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH re-equips torch | `src/main.ts:279-283` | Panel emission happens first; then fists plus torch in inventory triggers `equip(\"torch\")`. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "5. Extract scheduler and event processing while preserving exact tick phase order. Run tests."
+   ]
+  },
+  "i": {
+   "pass_": 1,
+   "rationale": [
+    "| Restore adds a log entry | `src/main.ts:409-413` | `save restored` changes subsequent log length and potentially future spawn behavior. |"
+   ]
+  },
+  "j": {
+   "pass_": 0,
+   "rationale": []
+  }
+ },
+ "b4c3-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirror versus bag double-accounting | pickup updates both at `src/main.ts:162-164`; crafting selectively changes mirrors at `187-201`; snapshot persists both at `381-386` | Preserve indepen"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Torch crafting permanently raises attack and starts timed buff | `src/main.ts:191-193`; attack reads both at `143-148` | Preserve `attackBonus += 1`, `torchBuffTicks = 30`, and combat calculation. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG order is replayable and load-bearing | LCG mutation `92-98`; combat draw `143-148`; spawn draw `345-348`; persisted state `393`, restored `412` | Preserve exact LCG arithmetic and draw order; no"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Spawn depends on log length parity | `src/main.ts:345-347` | Keep log append timing and use current log length before spawning. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Save is gated by pre-existing storage key | `src/main.ts:364-375`; periodic invocation `350-352` | Save remains a no-op without `\"ventralis:save\"`; increment counter only after gate passes. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH panel-before-re-equip quirk | `src/main.ts:279-283` | Emit panel showing fists first; then equip torch and emit its text. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "i": {
+   "pass_": 1,
+   "rationale": [
+    "| Restore appends a log entry after loaded log | `src/main.ts:409-413` | Preserve post-restore `say(\"save restored\")`; init\u2019s later wake log remains log-only. |"
+   ]
+  },
+  "j": {
+   "pass_": 0,
+   "rationale": [
+    "| `resetGame` | W all resettable game/session state, monster array, RNG; deliberately does not clear `worldRef`. |"
+   ]
+  }
+ },
+ "b4c3-luna": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are double-accounted | `main.ts:162-164`, `186-188` | Pickup increments both; crafting decrements inventory only. Do not normalize them. |"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Torch crafting leaves mirror counters unchanged | `main.ts:189-194` | Preserve `wood -= 0`, inventory consumption, `attackBonus += 1`, and `torchBuffTicks = 30`. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order is observable | `main.ts:92-99`, `143-148`, `246`, `346-347` | Preserve one LCG stream and call order; seed 7 must produce attack roll 5 first. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Spawn behavior depends on log length | `main.ts:345-348` | Preserve `log.length % 2 === 0` gating and exact log append order. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saves are gated by existing save key | `main.ts:364-374` | Preserve `decideUseStorage`; tick 10 is a no-op without the key. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH has a re-equip side effect | `main.ts:279-283` | Emit panel first, then equip torch when fists plus torch are present. |"
+   ]
+  },
+  "g": {
+   "pass_": 1,
+   "rationale": [
+    "| Stalker/crawler attack values in definitions are not used for damage | `main.ts:63-66`, `331-342` | Preserve actual hard-coded damage behavior. |"
+   ]
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "- Scheduled-event queue: it is an ordered temporal service with due-event filtering, not an entity collection. A queue abstraction preserves exact-tick semantics more clearly."
+   ]
+  },
+  "i": {
+   "pass_": 1,
+   "rationale": [
+    "| Restore appends a log entry | `main.ts:409-413` | Preserve post-restore log mutation. |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `resetGame` does not clear `worldRef` | `main.ts:441-456` | Preserve unless an explicit compatibility decision is made; current tests rely on subsequent init behavior. |"
+   ]
+  }
+ },
+ "b4c4-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are distinct balances, not duplicate representations to reconcile. Pickup increments both only for wood/stone. | `src/main.ts:162-164` |"
+   ]
+  },
+  "b": {
+   "pass_": 0,
+   "rationale": [
+    "| `torchBuffTicks` (80) | Proposed Component data | `components/combat.ts` |"
+   ]
+  },
+  "c": {
+   "pass_": 0,
+   "rationale": [
+    "Systems use controlled direct mutation of a session-owned `GameState` object, not returned command objects. This is the better fit for preserving the current observable ordering: a single tick mutates"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Wandering spawn consumes RNG only if both tick divisibility and log parity pass. A log-message change can therefore alter all later combat randomness. | `src/main.ts:345-348` |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saving is gated by pre-existing storage-key presence, not merely availability of storage/world. No key means no write and no save-counter increment. | `src/main.ts:364-375` |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH emits the old HUD panel before implicitly equipping a torch. The output order and displayed \u201cfists\u201d state are observable. | `src/main.ts:279-283` |"
+   ]
+  },
+  "g": {
+   "pass_": 1,
+   "rationale": [
+    "| Stalker attack uses hard-coded 3 damage rather than `MonsterInstance.attack`; crawler attacks only on every third tick. | `src/main.ts:332-342` |"
+   ]
+  },
+  "h": {
+   "pass_": 1,
+   "rationale": [
+    "| Scheduled events fire only when `at === tickCount`; events scheduled in the past remain queued forever, and all due events are processed before queue removal. | `src/main.ts:319-329` |"
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | W serialized gameplay state and monsters/RNG/log | reads parsed string | \u2014 | appends \u201csave restored\u201d after replacement |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `resetGame` does not clear `worldRef`; before a subsequent `initGame`, direct API calls can still emit to the prior world. Preserve or explicitly characterize before changing. | `src/main.ts:109-112"
+   ]
+  }
+ },
+ "b4c4-luna": {
+  "a": {
+   "pass_": 0,
+   "rationale": [
+    "| `wood` | Component data | Retain as legacy resource mirror; distinct from inventory |"
+   ]
+  },
+  "b": {
+   "pass_": 0,
+   "rationale": [
+    "| `torchBuffTicks` | Component data | Temporary-effect component |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| `src/main.ts:92-99`, `src/main.ts:143-151` | Combat and spawn consume the same RNG stream; consumption order is observable. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| `src/main.ts:345-347` | Spawn depends on `log.length % 2`, so logging changes gameplay. |"
+   ]
+  },
+  "e": {
+   "pass_": 0,
+   "rationale": [
+    "| `onKey` | Routes to actions; reads equipment/inventory | Delegated output | KeyH has extra coupling |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| `src/main.ts:281-285` | KeyH emits the panel first, then re-equips a torch when fists are equipped. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "- Systems use controlled direct mutation of a passed state/context object. This is preferable here to command queues because the legacy behavior depends on exact intra-tick ordering, immediate mirror "
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | Writes nearly all gameplay globals and monsters | None; calls `say` | Adds restore log entry |"
+   ]
+  },
+  "j": {
+   "pass_": 0,
+   "rationale": [
+    "| `resetGame` | Resets gameplay/session globals and monsters | None | Does not clear `worldRef` |"
+   ]
+  }
+ },
+ "b4c5-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory deliberately double-account pickups, but their craft behavior differs. | Pickup increments mirror and bag at `main.ts:162-164`; crafting removes only inventory at `186"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "differs. | Pickup increments mirror and bag at `main.ts:162-164`; crafting removes only inventory at `186-188`; torch leaves mirror values unchanged at `190`; ration secretly decrements mirror wood at"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order is replay-critical across attack and wandering spawn. | LCG mutation at `92-98`; attack uses it through `246`; spawn uses it at `345-347`. Do not add random calls or reorder sy"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Wandering-spawn eligibility depends on log parity. | `main.ts:345-347`; log-producing behavior therefore changes spawn/RNG evolution. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saves occur only when the save key already exists. | `decideUseStorage` at `364-367`; called by `persist` at `369-375`; tick invokes persistence at `350-353`. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH emits the old HUD panel before auto-equipping a carried torch. | `main.ts:279-283`. This must remain a deliberate compatibility branch. |"
+   ]
+  },
+  "g": {
+   "pass_": 1,
+   "rationale": [
+    "| `MonsterInstance.attack` is stored but unused in combat; retain in snapshots/entity shape for compatibility. | definition `291-295`, factory `232-235`, snapshot `392`, restore `410-411`. |"
+   ]
+  },
+  "h": {
+   "pass_": 1,
+   "rationale": [
+    "| Event removal is equality-based and occurs after handling, including all same-tick events. | `main.ts:319-329`. |"
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | W serialized state and monster array | parses input; appends \u201csave restored\u201d log |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `resetGame` does not clear `worldRef`; `initGame` replaces it. | `main.ts:441-457` versus `459-466`. |"
+   ]
+  }
+ },
+ "b4c5-luna": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are independently mutated | `src/main.ts:163`, `187-199` | Pickup increments both; crafting consumes inventory but leaves torch mirror counters unchanged; ration secre"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "tory are independently mutated | `src/main.ts:163`, `187-199` | Pickup increments both; crafting consumes inventory but leaves torch mirror counters unchanged; ration secretly decrements mirror wood o"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order is behavior | `92-99`, `143-148`, `346-347` | Preserve one LCG step per attack roll and one per eligible spawn, including ordering relative to other operations. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Log length affects spawning | `345-347` | Preserve `log.length % 2 === 0` as a spawn gate; logging changes can alter future monsters. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic save is gated by existing save key | `364-375` | `decideUseStorage` must run before incrementing `saveCounter` or writing storage. |"
+   ]
+  },
+  "f": {
+   "pass_": 0,
+   "rationale": [
+    "| KeyH re-equips torch | `271-284` | Panel emits first, then H may call `equip(\"torch\")`; preserve output order. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "- Scheduled-event queue: this is an ordered temporal service. It is not an entity collection; event timing and exact-tick removal are the abstraction."
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | Serialized data | Nearly every gameplay binding and monsters | None; calls `say` | Restores RNG state | Adds \u201csave restored\u201d log |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `worldRef` survives reset | `441-460` | Do not implicitly clear the session reference unless compatibility behavior is intentionally changed and justified. |"
+   ]
+  }
+ },
+ "b4c6-terra": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory double-account independently | `src/main.ts:162-164`, `186-201`, `253-254` | Keep `wood`/`stone` mirrors distinct from inventory; never derive one from the other. |"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Torch crafting preserves mirror drift and changes combat permanently | `src/main.ts:187-194` | Preserve `wood -= 0`, inventory-only costs, `torchBuffTicks = 30`, and cumulative `attackBonus += 1`. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG sequence is globally shared and order-dependent | `src/main.ts:92-99`, `143-148`, `345-348`, `377-394` | Preserve one LCG stream, exact arithmetic, save/restore state, and whether a branch consu"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Spawn depends on log length, not only game state/tick | `src/main.ts:345-348` | Preserve log append order and test parity at tick 20 before consuming spawn RNG. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| Periodic saving is gated by pre-existing save key | `src/main.ts:364-375`, `350-353` | `decideUseStorage` must remain the gate; tick 10 is a no-op without the key. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH emits HUD before re-equipping torch | `src/main.ts:279-284` | Retain both the legacy re-equip quirk and panel-first ordering. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 1,
+   "rationale": [
+    "| Scheduled events fire only at equality, then are removed | `src/main.ts:319-329` | Do not change to `<=`, sorting, or delayed removal. |"
+   ]
+  },
+  "i": {
+   "pass_": 1,
+   "rationale": [
+    "| Restore appends a post-restore log entry | `src/main.ts:409-413` | Retain this append even though debug output omits log content. |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| Reset does not clear `worldRef` | `src/main.ts:441-457` | Preserve unless a separately authorized behavior change updates characterization evidence. |"
+   ]
+  }
+ },
+ "b4c6-luna": {
+  "a": {
+   "pass_": 1,
+   "rationale": [
+    "| Resource mirrors and inventory are double-accounted | `src/main.ts:166-167`, `src/main.ts:185-188`, `src/main.ts:201-202` | Preserve separate mirror counters and inventory mutation paths. |"
+   ]
+  },
+  "b": {
+   "pass_": 1,
+   "rationale": [
+    "| Crafting changes combat state | `src/main.ts:188-189` | Preserve `attackBonus += 1` and `torchBuffTicks = 30`. |"
+   ]
+  },
+  "c": {
+   "pass_": 1,
+   "rationale": [
+    "| RNG consumption order affects combat and spawn behavior | `src/main.ts:94-95`, `src/main.ts:147`, `src/main.ts:348` | Centralize RNG but preserve call order exactly. |"
+   ]
+  },
+  "d": {
+   "pass_": 1,
+   "rationale": [
+    "| Log length affects wandering spawns | `src/main.ts:347-349` | Spawn logic must read the same log length at the same point. |"
+   ]
+  },
+  "e": {
+   "pass_": 1,
+   "rationale": [
+    "| `decideUseStorage` gates periodic saves | `src/main.ts:364-367`, `src/main.ts:352-353` | Preserve no-op saves when the key is absent. |"
+   ]
+  },
+  "f": {
+   "pass_": 1,
+   "rationale": [
+    "| KeyH re-equips a torch after emitting the panel | `src/main.ts:276-280` | Preserve panel-first, equipment-output-second ordering. |"
+   ]
+  },
+  "g": {
+   "pass_": 0,
+   "rationale": []
+  },
+  "h": {
+   "pass_": 0,
+   "rationale": [
+    "| `debugDump` | Reads all state including pending events/save counter | None | Exact string is tested |"
+   ]
+  },
+  "i": {
+   "pass_": 0,
+   "rationale": [
+    "| `restore` | Writes nearly every state binding and monsters | Emits restore log | Restores RNG state |"
+   ]
+  },
+  "j": {
+   "pass_": 1,
+   "rationale": [
+    "| `worldRef` survives `resetGame` | `src/main.ts:441-457` | Avoid silently clearing the session/world binding unless explicitly required. |"
+   ]
+  }
+ }
+}

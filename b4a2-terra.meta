@@ -1,0 +1,11 @@
+start_utc=2026-09-18T14:39:31Z
+end_utc=2026-09-18T14:42:21Z
+elapsed_seconds=170
+route=openai-codex:gpt-5.6-terra
+model=gpt-5.6-terra
+sandbox=danger-full-access
+codex_exit=0
+head=c3cc82c65cfaa22d4534d5e36b7135b5e6d8bc37
+thread_id=01a0b4f5-53ce-7ee0-92c3-40945d5faab4
+usage="usage":{"input_tokens":406078,"cached_input_tokens":375040,"cache_write_input_tokens":0,"output_tokens":7538,"reasoning_output_tokens":1660}
+jsonl=C:/Users/steph/Documents/development/luna_framework/b4a2-terra.jsonl
