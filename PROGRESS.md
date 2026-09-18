@@ -11,6 +11,7 @@
 - n=3 repeat track (b4r): closed, parent-adjudicated scores retained per run.
 - Controlled-confirmation track (n=6/arm, b4c): complete and frozen — 12/12 valid runs; protocol label CONFIRMED, explicitly EXPLORATORY (revised scoring rule; order-entangled; not a model ranking). See `RESULTS.md` "B4 controlled-confirmation track" and `b4-repeat-track/` (73-entry SHA-256 manifest). Evidence bundle committed locally as the initial snapshot `8ae7387`; tag `b4-confirmation-frozen`.
 - Current phase: none active. Any follow-up requires a separately pre-registered protocol; no reruns or scoring-rule changes against this frozen record.
+- Next validation target (decision 2026-09-18): Echoes of Aion (`C:/Users/steph/Documents/development/EchoesOfAion`) selected as the mature-project operational pilot for the framework discipline — frozen baselines, explicit file ownership, deterministic acceptance tests, independent verification, machine-readable evidence. This is NOT part of the B4 evidence and no claim from the frozen track applies to it; operational success criteria (regressions caught, scope violations, rework, ceremony cost) replace fixture-rubric scoring. See the 2026-09-18 section in that repo's `PROGRESS.md` for the audit and pilot state.
 
 ## Completed work
 
@@ -72,7 +73,7 @@
 - B1 packet/baseline metadata was finalized after its original run artifacts; the stabilized B1 pair supersedes them for metrics once n>1 exists.
 - B3's domain helper was already correct, reducing the realized change to service/API propagation; B4 must leave the domain layer incomplete.
 - Some worker runtime reports did not expose provider/model/session metadata; explicit CLI dispatch plus JSONL `thread_id` is the route evidence.
-- `luna_framework` itself is not a Git repository, so root-level documentation has no commit history and root-level `git diff --check` is unavailable.
+- `luna_framework` documentation/evidence was unversioned until 2026-09-18, when the evidence bundle was frozen as git snapshot `8ae7387` (tag `b4-confirmation-frozen`), with `fixtures/` gitignored so the nested fixture repo remains its own authority.
 
 ## Current conclusions
 
