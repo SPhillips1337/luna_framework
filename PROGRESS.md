@@ -7,7 +7,10 @@
 - Controlled B1/B2/B3 evaluations: executed with explicit Luna and Terra dispatch routes.
 - Launcher stability: root-caused and fixed (sandbox child-process spawn); matched re-runs B1/B2/B3 completed with normalized timing/cost capture and independent verification. See `RESULTS.md` "Stabilized matched re-runs".
 - Echoes of Aion: untouched during fixture work.
-- Current phase: repeat runs and B4 design; the environment-noise blocker is resolved.
+- B4 ladder (A0 audit + A1–A4 execution slices): complete; see `RESULTS.md`.
+- n=3 repeat track (b4r): closed, parent-adjudicated scores retained per run.
+- Controlled-confirmation track (n=6/arm, b4c): complete and frozen — 12/12 valid runs; protocol label CONFIRMED, explicitly EXPLORATORY (revised scoring rule; order-entangled; not a model ranking). See `RESULTS.md` "B4 controlled-confirmation track" and `b4-repeat-track/` (73-entry SHA-256 manifest). Evidence bundle committed locally as the initial snapshot `8ae7387`; tag `b4-confirmation-frozen`.
+- Current phase: none active. Any follow-up requires a separately pre-registered protocol; no reruns or scoring-rule changes against this frozen record.
 
 ## Completed work
 
