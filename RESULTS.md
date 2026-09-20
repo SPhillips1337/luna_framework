@@ -369,5 +369,20 @@ Artifacts: `b4c-blind/` (A–L), 12 `b4c{r}-{arm}-final.md` + transcripts, `b4c-
   → test evidence → freshness → never-skipped native verification) run as
   procedure on real packets, with provider adapters optional and disabled by
   default.
+- Operationalized same day: native reference implementation
+  `scripts/repo_context.py` (provider-neutral Finding envelope;
+  baseline-anchored `git show` reads, grep discovery, honest-negative test
+  links, generated-file filtering, fail-closed packet verification — no
+  provider contacted) and adversarial contract suite
+  `scripts/test_repo_context.py` (9 tests, one per observed pilot failure
+  mode: stale body after mutation, wrong path, wrong symbol, missing test
+  coverage, generated evidence, repository-identity confusion, fabricated
+  citation, worktree-vs-baseline labelling, CLI round-trip; all pass).
+  Authoring the suite caught and fixed three defects in the implementation
+  itself — produce/verify evidence-format asymmetry, generated-file hits
+  entering packet claims, and mutable-`HEAD` provenance stamps — which is
+  the suite working as intended. First real-repository packet run against
+  the Echoes frozen baseline recorded in Echoes
+  `repository-intelligence/results/native-reference-packet-run.md`.
 - This entry records a workflow-protocol decision only. It creates no
   benchmark run, touches no frozen B4 evidence, and changes no scoring rule.
