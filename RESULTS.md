@@ -344,10 +344,30 @@ Artifacts: `b4c-blind/` (A–L), 12 `b4c{r}-{arm}-final.md` + transcripts, `b4c-
   there is candidate tools for discovery, native file/Git/test inspection for
   verification. It is not a universal tool ranking and no claim transfers to
   model quality or routing superiority.
-- Owner scoring of the five native-vs-candidate result pairs remains an
-  **outstanding prerequisite** in Echoes (`PROGRESS.md` closeout note).
-- `rag-rat` is **not evaluated**; it is the pre-registered candidate arm 2,
-  to run in Echoes against the same baseline/packets only after the srclight
-  scoring debt is closed or explicitly deferred.
+- Owner scoring of the five native-vs-candidate result pairs: **closed
+  2026-09-20** in Echoes
+  (`repository-intelligence/results/owner-adjudication-pairs-01-05.md`,
+  Echoes commit `c84af77`). Every severe candidate claim was re-extracted
+  from the frozen baseline blob; five citations marked "verified" existed at
+  neither the stamped baseline nor HEAD. **srclight NOT adopted.**
+- `rag-rat` (pre-registered candidate arm 2): **executed 2026-09-20** under
+  the added hard gates (citation existence at stamped commit, post-mutation
+  freshness, external DB honoring, wrong-path loudness, test-link
+  completeness). Record: `repository-intelligence/candidates/rag-rat-qualification.md`
+  (Echoes commits `a18b23f`, `0eb1ece`). Gates failed: unlabeled stale graph
+  edges after an edit (while `read-chunk` fail-closes with `StaleChunk`),
+  silent `null` on bogus symbols, and plain-JavaScript coverage blindness
+  with zero discovery warnings. **rag-rat NOT adopted.** The five-packet
+  paired arm was not run — the stop rule fired at gate level (recorded as an
+  honest scope limitation).
+- Candidate-qualification phase closed: **no external provider adopted.**
+  The contract's safety invariants are now evidenced by two distinct failure
+  profiles (srclight: fabricated citations and false negatives; rag-rat:
+  coverage blindness and query-level staleness silence) against one clean
+  native baseline. Next step per this contract is operational: the native
+  context-layer workflow (orientation → anchored discovery → impact preflight
+  → test evidence → freshness → never-skipped native verification) run as
+  procedure on real packets, with provider adapters optional and disabled by
+  default.
 - This entry records a workflow-protocol decision only. It creates no
   benchmark run, touches no frozen B4 evidence, and changes no scoring rule.
