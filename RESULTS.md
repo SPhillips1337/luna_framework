@@ -404,7 +404,8 @@ Artifacts: `b4c-blind/` (A–L), 12 `b4c{r}-{arm}-final.md` + transcripts, `b4c-
 - Stability fix from the evaluation: repository-level freshness envelope
   now inventories `dirty_paths` (worker flagged unnamed dirty files as
   unverifiable per-claim); suite re-passed 9/9; proven live on Echoes.
-- Next operational task (not provider evaluation): **packet profiles** —
+- Optional future improvement (not unfinished qualification work, not
+  provider evaluation): **packet profiles** —
   discovery (done), implementation (full bodies, validators, ordering,
   tests, client surfaces, current-commit anchors), verification (changed
   files, direct tests, typecheck/build entry points, post-edit freshness).
