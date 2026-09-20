@@ -386,3 +386,26 @@ Artifacts: `b4c-blind/` (A–L), 12 `b4c{r}-{arm}-final.md` + transcripts, `b4c-
   `repository-intelligence/results/native-reference-packet-run.md`.
 - This entry records a workflow-protocol decision only. It creates no
   benchmark run, touches no frozen B4 evidence, and changes no scoring rule.
+
+## Native context-layer worker validation (2026-09-20)
+
+- Packet-only worker simulation (Echoes `repository-intelligence/results/
+  native-reference-worker-evaluation.md`): a model planned the P02
+  hypothetical from the 28-claim discovery packet alone — no repo access,
+  "unresolved in packet" required for absent answers. It distinguished
+  exact/syntactic/test-link kinds correctly, obeyed both honest-negative
+  notes verbatim, read provenance correctly (baseline-exact, HEAD
+  diverged), and named the missing implementation evidence precisely
+  (resolver body, validators/order paths, combat ordering, client
+  surfaces) rather than guessing.
+- **Verdict: native context layer validated for bounded, provenance-aware
+  discovery. Packet accepted as discovery seed; rejected as sufficient
+  implementation context — by design (invariant 1).**
+- Stability fix from the evaluation: repository-level freshness envelope
+  now inventories `dirty_paths` (worker flagged unnamed dirty files as
+  unverifiable per-claim); suite re-passed 9/9; proven live on Echoes.
+- Next operational task (not provider evaluation): **packet profiles** —
+  discovery (done), implementation (full bodies, validators, ordering,
+  tests, client surfaces, current-commit anchors), verification (changed
+  files, direct tests, typecheck/build entry points, post-edit freshness).
+  Use the implementation profile on the next real change.

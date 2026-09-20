@@ -112,6 +112,9 @@ class RepoContext:
             "worktree_diverges": (path in dirty) if path else bool(dirty),
             "stale_bodies_possible": (path in dirty) if path else bool(dirty),
             "dirty_paths_count": len(dirty),
+            # repo-level inventory so a worker can independently determine
+            # whether an anchor is affected by uncommitted state (C1/C6)
+            "dirty_paths": dirty if path is None else None,
         }
 
     def is_generated(self, path: str) -> bool:
