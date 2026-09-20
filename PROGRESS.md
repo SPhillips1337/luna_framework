@@ -3,6 +3,7 @@
 ## Current state
 
 - Framework documentation foundation: complete.
+- Repository-intelligence provider contract: defined 2026-09-20 in `REPOSITORY-INTELLIGENCE.md` (capability contract C1–C10, context-layer workflow, result shape, safety invariants, qualification rules); `SPINE.md` component 2 now consumes it; registry entry in `RESULTS.md`. Evidence basis is the Echoes of Aion srclight pilot (commit `fb042bc`) — exploratory protocol evidence only. Outstanding prerequisite: owner scoring of the five native-vs-candidate pairs in Echoes. rag-rat not evaluated; pre-registered as candidate arm 2 there.
 - Canonical TypeScript routing fixture: created at `fixtures/routing-benchmark-ts`.
 - Controlled B1/B2/B3 evaluations: executed with explicit Luna and Terra dispatch routes.
 - Launcher stability: root-caused and fixed (sandbox child-process spawn); matched re-runs B1/B2/B3 completed with normalized timing/cost capture and independent verification. See `RESULTS.md` "Stabilized matched re-runs".

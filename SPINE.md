@@ -18,6 +18,8 @@ Receives an engineering objective and divides it into independently understandab
 
 Collects source-of-truth files, symbols, tests, dependency relationships, build information, history, and relevant project memory. It produces task-scoped context rather than sending an entire repository to every worker.
 
+Any provider behind this layer must satisfy the provider-neutral capability contract, workflow, result shape, and safety invariants in `REPOSITORY-INTELLIGENCE.md`. Generated indexes are discovery aids; native file/Git/test verification remains mandatory and is never delegated to a provider. Tooling here supports context acquisition; it does not by itself establish model quality or routing superiority.
+
 ### 3. Glossary and contract layer
 
 Defines domain vocabulary, public seams, data shapes, invariants, ownership, and known hazards. It prevents a worker from substituting plausible but unsupported identifiers or semantics.

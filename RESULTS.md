@@ -329,3 +329,25 @@ Pre-registered in `b4-repeat-track/B4-CONFIRM-PROTOCOL.md`: six paired rounds on
 **Cautious interpretation (binding).** Exploratory confirmation under a revised scoring rule — not independent confirmatory evidence, not a model ranking. The reproduced signal is a small artifact-completeness gap, concentrated in the hidden-coupling register (dim-3 mean gap 1.17/20; full-score mean gap 2.17/100 with fully overlapping ranges), entangled with run order (the gap is 6× larger when Luna goes second), on author-written traps with n=6/arm and a shared grading procedure. No superiority claim is made; the conclusion is bounded to this judgment task on this fixture.
 
 Artifacts: `b4c-blind/` (A–L), 12 `b4c{r}-{arm}-final.md` + transcripts, `b4c-dim3-adjudication-sheet.json`, `b4c-blind-grader-output.json`, `b4c-blind-map.json`, `b4c-final-scores.json`, `b4c-scoring-state.json`, protocol + `b4c-scoring-archive/` provenance chain — all SHA-256 listed in `b4-repeat-track/MANIFEST.json` (52 entries). The twelve b4c* worktrees (all zero-dirt, verified) removed after recording; ladder worktrees and result branches untouched.
+
+## Repository-intelligence provider contract (2026-09-20)
+
+- Added `REPOSITORY-INTELLIGENCE.md`: provider-neutral capability contract
+  (C1–C10), context-layer workflow, result shape, and binding safety
+  invariants for the SPINE "Repository intelligence and context layer".
+- Evidence basis: Echoes of Aion repository-intelligence pilot — five paired
+  packets, native baseline vs `srclight` 0.25.3, frozen baseline `bf7b655`,
+  recorded in Echoes commit `fb042bc`.
+  Paths: `EchoesOfAion/.agent/evaluations/repository-intelligence-pilot.md`
+  and `EchoesOfAion/.agent/evaluations/repository-intelligence/results/`.
+- Status of that evidence: **exploratory protocol evidence**; adopted policy
+  there is candidate tools for discovery, native file/Git/test inspection for
+  verification. It is not a universal tool ranking and no claim transfers to
+  model quality or routing superiority.
+- Owner scoring of the five native-vs-candidate result pairs remains an
+  **outstanding prerequisite** in Echoes (`PROGRESS.md` closeout note).
+- `rag-rat` is **not evaluated**; it is the pre-registered candidate arm 2,
+  to run in Echoes against the same baseline/packets only after the srclight
+  scoring debt is closed or explicitly deferred.
+- This entry records a workflow-protocol decision only. It creates no
+  benchmark run, touches no frozen B4 evidence, and changes no scoring rule.
